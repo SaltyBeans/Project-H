@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 1f5a93be04ed09a46b9c96a98cef68b5
+timeCreated: 1449952808
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 4fda326d801b420263458f0c5e78160a
+  longitude: -105.283
+  latitude: 40.017000000000003
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 2.5695467, y: .517221808, z: -.403139174}
+      lookAt: {x: .946703851, y: .29267478, z: -.360728085}
+      up: {x: -.136968002, y: .990569055, z: .00357949943}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: '*'
+    100002: '* 1'
+    100004: '* 2'
+    100006: '* 3'
+    100008: '* 4'
+    100010: 1
+    100012: 2
+    100014: 3
+    100016: 4
+    100018: 5
+    100020: 6
+    100022: 7
+    100024: 8
+    100026: 9
+    100028: //RootNode
+    400000: '*'
+    400002: '* 1'
+    400004: '* 2'
+    400006: '* 3'
+    400008: '* 4'
+    400010: 1
+    400012: 2
+    400014: 3
+    400016: 4
+    400018: 5
+    400020: 6
+    400022: 7
+    400024: 8
+    400026: 9
+    400028: //RootNode
+    2300000: '*'
+    2300002: '* 1'
+    2300004: '* 2'
+    2300006: '* 3'
+    2300008: '* 4'
+    2300010: 1
+    2300012: 2
+    2300014: 3
+    2300016: 4
+    2300018: 5
+    2300020: 6
+    2300022: 7
+    2300024: 8
+    2300026: 9
+    2300028: //RootNode
+    3300000: '*'
+    3300002: '* 1'
+    3300004: '* 2'
+    3300006: '* 3'
+    3300008: '* 4'
+    3300010: 1
+    3300012: 2
+    3300014: 3
+    3300016: 4
+    3300018: 5
+    3300020: 6
+    3300022: 7
+    3300024: 8
+    3300026: 9
+    3300028: //RootNode
+    4300000: Mesh safe
+    4300002: Mesh *
+    4300004: Mesh 1
+    4300006: Mesh 2
+    4300008: Mesh 3
+    4300010: Mesh 4
+    4300012: Mesh 5
+    4300014: Mesh 6
+    4300016: Mesh 7
+    4300018: Mesh 8
+    4300020: Mesh 9
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0253999997
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
