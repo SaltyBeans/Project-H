@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DoorScript : MonoBehaviour {
+public class DoorScript : MonoBehaviour
+{
     private bool DoorState = false;
     void Start()
     {
@@ -19,19 +20,19 @@ public class DoorScript : MonoBehaviour {
         if (name == "outsidedoor")
         {
             GetComponent<Transform>().rotation = Quaternion.Euler(0, 180, 0);
-            
+
             DoorState = true;
         }
         else
         {
-            
+
             GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
             DoorState = true;
         }
     }
     public void CloseDoor()
     {
-        if (name=="outsidedoor")
+        if (name == "outsidedoor")
         {
             GetComponent<Transform>().rotation = Quaternion.Euler(0, -90, 0);
             DoorState = false;

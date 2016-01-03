@@ -58,8 +58,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
         void FixedUpdate()
         {
-            Physics.Raycast(ethanhead.transform.position, -ethanhead.transform.up, out hit, 1.5f);
-            Debug.Log(hit.collider.name);
+            Physics.Raycast(ethanhead.transform.position, ethanhead.transform.up, out hit, 1.5f);
         }
 
         // Update is called once per frame
