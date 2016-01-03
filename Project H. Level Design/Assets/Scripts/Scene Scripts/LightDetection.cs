@@ -26,33 +26,30 @@ public class LightDetection : MonoBehaviour
 
     void Update()
     {
-        if (foundMoney[0] != null)
+
+        foreach (GameObject money in foundMoney)
         {
-            foreach (GameObject money in foundMoney)
+
+            Vector3 relativeMoneyPos = money.transform.position - transform.position;
+
+            if (Physics.Raycast(transform.position, relativeMoneyPos, out hit))
             {
 
-                Vector3 relativeMoneyPos = money.transform.position - transform.position;
-
-                if (Physics.Raycast(transform.position, relativeMoneyPos, out hit))
+                if (hit.collider.tag == "Money")
                 {
-                    //Debug.Log(hit.collider.name);
+                    moneyFound = true;
+                    Vector3[] pos = new Vector3[] { gameObject.transform.position, hit.collider.gameObject.transform.position };
 
-                    Debug.DrawRay(transform.position, relativeMoneyPos, Color.red);
-                    if (hit.collider.tag == "Money")
-                    {
-                        moneyFound = true;
-                        Vector3[] pos = new Vector3[] { gameObject.transform.position, hit.collider.gameObject.transform.position };
-
-                        ray.SetPositions(pos);
-                        break;
-                    }
-                    if (hit.collider.tag != "Money")
-                    {
-                        moneyFound = false;
-                    }
+                    ray.SetPositions(pos);
+                    break;
+                }
+                if (hit.collider.tag != "Money")
+                {
+                    moneyFound = false;
                 }
             }
         }
+
 
         if (moneyFound == true)
         {

@@ -138,8 +138,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 ethanbody.transform.localRotation = firstRot;
 
                 ethanhead.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position); //Look at those objects.
-                ethanhead.transform.Rotate(-90, 0, 0);
-                ethanhead.transform.Rotate(0, 90, 0);
+                ethanhead.transform.Rotate(90, 0, 0);
+                ethanhead.transform.Rotate(0, -90, 0);
 
                 Debug.Log("looking at: " + getRoom()[lookCounter].GetComponent<Transform>().name);
             }
