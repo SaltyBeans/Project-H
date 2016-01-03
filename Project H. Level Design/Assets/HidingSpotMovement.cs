@@ -20,6 +20,8 @@ public class HidingSpotMovement : MonoBehaviour
         if (movement.getNextPosition())
         {
             //do that shit.
+
+        //umm
         }
 
 
