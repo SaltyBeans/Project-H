@@ -92,8 +92,8 @@ public class AIControl : MonoBehaviour
                         lookedAtObjects = false;     //Didn't look at every object in the current -new- room
                         time = Time.time;
                         lookCounter = 0;
-                        //agent.Stop();
-                        //agent.updateRotation = false;
+                        agent.Stop();
+                        agent.updateRotation = false;
                     }
 
                     else // If not close to the target
@@ -111,11 +111,10 @@ public class AIControl : MonoBehaviour
 
         else //If player not walking, looking
         {
-            //character.Move(agent.desiredVelocity, false, false);
+            character.Move(Vector3.zero, false, false);
 
             if (lookedAtObjects == false)   
             {
-                character.Move(Vector3.zero, false, false);
 
                 if (lookCounter < getRoom().Length && Time.time - time > lookForSeconds) // LookCounter is lower than length and current time - last looked time is bigger than lookForSeconds
                 {
@@ -128,7 +127,7 @@ public class AIControl : MonoBehaviour
                     lookedAtObjects = true; //Looked at every object in the room
                     lookingState = false;       //Change the looking state to walking.
 
-                    //if (targetCounter != target.Length - 1) //If this is not the last room...
+                    if (targetCounter != target.Length - 1) //If this is not the last room...
                         targetCounter++;            //Change the walking target.
 
                     lookCounter = 0;            //Reset the looking counter.
@@ -142,10 +141,10 @@ public class AIControl : MonoBehaviour
     {
         if (lookedAtObjects == false && lookingState == true)
         {
-            //Quaternion firstRot = ethanbody.transform.rotation;
+            Quaternion firstRot = ethanbody.transform.rotation;
             ethanbody.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
-            //firstRot = ethanbody.transform.localRotation;
-            //ethanbody.transform.localRotation = firstRot;
+            firstRot.y = ethanbody.transform.localRotation.y;
+            ethanbody.transform.localRotation = firstRot;
 
             ethanhead.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position); //Look at those objects.
             ethanhead.transform.Rotate(90, 0, 0);
