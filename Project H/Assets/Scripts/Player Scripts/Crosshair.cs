@@ -10,11 +10,22 @@ public class Crosshair : MonoBehaviour {
     RaycastHit hit;
     public Camera cam;
 
-    public TextMesh moneyText;
+    [SerializeField]
+    private GameObject official;
+
+    private MeshRenderer FOVRender;
 	void Start () {
+        Component[] renderers = official.GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in renderers)
+            if (renderer.name == "DetectionObject")
+                FOVRender = renderer;
+
         pos = new Rect((Screen.width - crosshair.width) / 2, (Screen.height - crosshair.height) / 2, crosshair.width, crosshair.height);
         infoText.text = null;
-	}
+
+        
+    }
 
     void Update()
     {
@@ -29,6 +40,19 @@ public class Crosshair : MonoBehaviour {
                 CursorLock = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+ 
+            if (FOVRender.enabled && official.activeSelf)
+                FOVRender.enabled = false;
+
+            else if (!FOVRender.enabled && official.activeSelf)
+                FOVRender.enabled = true;
+            
+
+        }
+
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f))
         {
@@ -65,22 +89,6 @@ public class Crosshair : MonoBehaviour {
     }
     void FixedUpdate()
     {
-        if (Application.loadedLevel == 2)
-        {
-            GameObject[] moneyInScene = GameObject.FindGameObjectsWithTag("Money");
-
-            int money = 0;
-
-            foreach (GameObject mon in moneyInScene)
-            {
-                money += mon.GetComponent<MoneyScript10K>().getMoneyAmount();
-            }
-
-            moneyText.text = money + "$ in scene.";
-        }
-        
-
-
         if (Physics.Raycast ( cam.transform.position , cam.transform.forward , out hit ,5.0f) )
         {
             if (hit.collider.tag == "hideSpot")

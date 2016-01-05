@@ -24,8 +24,10 @@ public class WaveBehaviour : MonoBehaviour
 
     bool successfulPlayer = false;
     bool levelFinished = false;
-    void Start()
+    void Awake()
     {
+        setComponents(false);
+
         if (Application.loadedLevel == 1 || Application.loadedLevel == 2)
         {
             Text1.text = "You need to hide the evidence.";
@@ -37,7 +39,7 @@ public class WaveBehaviour : MonoBehaviour
 
             EndWaveTexture.SetActive(true);
             textUp = true;
-            setComponents(false);
+            
         }
         if (Application.loadedLevel == 3)
         {
@@ -50,7 +52,6 @@ public class WaveBehaviour : MonoBehaviour
 
             EndWaveTexture.SetActive(true);
             textUp = true;
-            setComponents(false);
         }
     }
 
