@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OfficialDisabler : MonoBehaviour {
+public class OfficiaDisabler : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,4 +10,6 @@ public class OfficialDisabler : MonoBehaviour {
             other.gameObject.SetActive(false);
         }
     }
+
+
 }

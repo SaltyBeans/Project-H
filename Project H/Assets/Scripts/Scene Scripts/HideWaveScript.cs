@@ -16,9 +16,9 @@ public class HideWaveScript : MonoBehaviour {
 
     private bool officialSpawned = false;
 
-    
+
     public GameObject Official;
-    public Transform officialPosition;
+    //public Transform officialPosition;
 
     void Start()
     {
