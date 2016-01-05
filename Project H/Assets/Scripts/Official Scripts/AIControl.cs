@@ -86,14 +86,14 @@ public class AIControl : MonoBehaviour
                 {
                     agent.SetDestination(target[targetCounter].position);
 
-                    if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 1.5 && targetCounter < target.Length)  //If Official is closer than 1.5 to the target and next target is not OutOfBounds
+                    if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 0.5 && targetCounter < target.Length)  //If Official is closer than 1.5 to the target and next target is not OutOfBounds
                     {
                         lookingState = true;              // Not walking, looking
                         lookedAtObjects = false;     //Didn't look at every object in the current -new- room
                         time = Time.time;
                         lookCounter = 0;
-                        agent.Stop();
-                        agent.updateRotation = false;
+                        //agent.Stop();
+                        //agent.updateRotation = false;
                     }
 
                     else // If not close to the target
@@ -111,10 +111,11 @@ public class AIControl : MonoBehaviour
 
         else //If player not walking, looking
         {
-            character.Move(agent.desiredVelocity, false, false);
+            //character.Move(agent.desiredVelocity, false, false);
 
-            if (lookedAtObjects == false)   /*  I might not need this. */
+            if (lookedAtObjects == false)   
             {
+                character.Move(Vector3.zero, false, false);
 
                 if (lookCounter < getRoom().Length && Time.time - time > lookForSeconds) // LookCounter is lower than length and current time - last looked time is bigger than lookForSeconds
                 {
@@ -133,22 +134,18 @@ public class AIControl : MonoBehaviour
                     lookCounter = 0;            //Reset the looking counter.
                     agent.Resume();            //Resume the navigation.
                 }
-
             }
-
         }
-
-
     }
 
     void LateUpdate()
     {
         if (lookedAtObjects == false && lookingState == true)
         {
-            Quaternion firstRot = ethanbody.transform.rotation;
+            //Quaternion firstRot = ethanbody.transform.rotation;
             ethanbody.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
-            firstRot.y = ethanbody.transform.localRotation.y;
-            ethanbody.transform.localRotation = firstRot;
+            //firstRot = ethanbody.transform.localRotation;
+            //ethanbody.transform.localRotation = firstRot;
 
             ethanhead.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position); //Look at those objects.
             ethanhead.transform.Rotate(90, 0, 0);
