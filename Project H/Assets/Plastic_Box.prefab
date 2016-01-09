@@ -61,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100788}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 4.65, y: 0.56, z: -1.27}
+  m_LocalPosition: {x: 4.7780776, y: 0.9, z: -0.9078325}
   m_LocalScale: {x: 4.11681, y: 4.1168113, z: 4.1168113}
   m_Children:
   - {fileID: 461798}
@@ -125,14 +125,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100788}
-  m_Mesh: {fileID: 4300002, guid: 2a8c463610c2ad447a9877c80556987e, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 98f0a7ec5de091a4d9e7ab2f1927fe73, type: 3}
 --- !u!33 &3384556
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194726}
-  m_Mesh: {fileID: 4300000, guid: 2a8c463610c2ad447a9877c80556987e, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 98f0a7ec5de091a4d9e7ab2f1927fe73, type: 3}
 --- !u!54 &5406848
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -174,7 +174,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 2a8c463610c2ad447a9877c80556987e, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 98f0a7ec5de091a4d9e7ab2f1927fe73, type: 3}
 --- !u!65 &6500502
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -185,8 +185,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.30606738, y: 0.0045917807, z: 0.18424836}
-  m_Center: {x: 0.17087762, y: 0.0022959048, z: 0.1028774}
+  m_Size: {x: 0.30606738, y: 0.0147760855, z: 0.18424836}
+  m_Center: {x: 0.17087759, y: 0.00166378, z: 0.1028774}
 --- !u!65 &6514928
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -241,7 +241,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 98f0a7ec5de091a4d9e7ab2f1927fe73, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100788}

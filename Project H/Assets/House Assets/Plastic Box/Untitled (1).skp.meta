@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2a8c463610c2ad447a9877c80556987e
-timeCreated: 1452355105
+guid: 98f0a7ec5de091a4d9e7ab2f1927fe73
+timeCreated: 1452360733
 licenseType: Free
 SketchUpImporter:
   generateBackFace: 0
@@ -8,7 +8,7 @@ SketchUpImporter:
   selectedNodes: 0000000001000000020000000300000004000000
   assetHash:
     serializedVersion: 2
-    Hash: 7432751dcdf9b786f74859617da429af
+    Hash: 949e6bc2251fac0a4099a52f06df333a
   longitude: -105.283
   latitude: 40.017
   northCorrection: -0

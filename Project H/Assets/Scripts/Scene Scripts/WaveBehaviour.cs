@@ -17,8 +17,7 @@ public class WaveBehaviour : MonoBehaviour
     private Text Text2;
     [SerializeField]
     private Text Text3;
-
-
+    
     bool textUp = false;
     private Text currentText;
 
@@ -28,10 +27,22 @@ public class WaveBehaviour : MonoBehaviour
     {
         setComponents(false);
 
-        if (Application.loadedLevel == 1 || Application.loadedLevel == 2)
+        if (Application.loadedLevel == 1)
         {
             Text1.text = "You need to hide the evidence.";
-            Text2.text = "This week it's REDACTED $.\n Next week there will be more.";
+            Text2.text = "This week it's 50.000$.\n Next week there will be more.";
+            Text3.text = "You don't have much time.";
+
+            currentText = Text1;
+            StartCoroutine(FadeTo(Text1, 1.0f, 2.0f));
+
+            EndWaveTexture.SetActive(true);
+            textUp = true;            
+        }
+        if (Application.loadedLevel == 2)
+        {
+            Text1.text = "You need to hide the evidence.";
+            Text2.text = "This week it's 100.000$.\n Next week there will be more.";
             Text3.text = "You don't have much time.";
 
             currentText = Text1;
@@ -39,7 +50,6 @@ public class WaveBehaviour : MonoBehaviour
 
             EndWaveTexture.SetActive(true);
             textUp = true;
-            
         }
         if (Application.loadedLevel == 3)
         {

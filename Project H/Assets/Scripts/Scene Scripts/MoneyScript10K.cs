@@ -10,11 +10,11 @@ public class MoneyScript10K : MonoBehaviour
 
     float oldDrag;
     float oldAngularDrag;
-    public readonly int moneyType = 100000;
+    public readonly int moneyType = 10000;
 
     void Start()
     {
-        moneyAmount = 100000;
+        moneyAmount = 10000;
         oldDrag = GetComponent<Rigidbody>().drag;
         oldAngularDrag = GetComponent<Rigidbody>().angularDrag;
     }

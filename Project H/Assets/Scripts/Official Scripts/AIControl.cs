@@ -131,8 +131,6 @@ public class AIControl : MonoBehaviour
                     { 
                         targetCounter++;//Change the walking target.
                     }
-                    if (targetCounter  < target.Length ) //If this is not the last room...
-                        targetCounter++;            //Change the walking target.
 
                     lookCounter = 0;            //Reset the looking counter.
                     agent.Resume();            //Resume the navigation.
