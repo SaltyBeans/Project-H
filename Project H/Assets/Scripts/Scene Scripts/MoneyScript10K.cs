@@ -3,18 +3,18 @@ using System.Collections;
 
 public class MoneyScript10K : MonoBehaviour
 {
-
-    //This may be enum or something else, depending on the prefab.
     private int moneyAmount { get; set; }
-    //Right now, amount is randomized everytime.
 
 
-
+    float oldDrag;
+    float oldAngularDrag;
     public readonly int moneyType = 10000;
 
     void Start()
     {
         moneyAmount = 100000;
+        oldDrag = GetComponent<Rigidbody>().drag;
+        oldAngularDrag = GetComponent<Rigidbody>().angularDrag;
     }
 
     public int getMoneyAmount()
@@ -25,5 +25,18 @@ public class MoneyScript10K : MonoBehaviour
     public void setMoneyAmout(int amount)
     {
         moneyAmount = amount;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "MoneyBlockVolume")
+        {
+            gameObject.transform.position = GameObject.Find("SpawnPositions/MoneySpawnPosition").GetComponent<Transform>().position;
+
+            GameObject.Find("Rigidbody dragger").GetComponent<SpringJoint>().connectedBody.drag = oldDrag;
+            GameObject.Find("Rigidbody dragger").GetComponent<SpringJoint>().connectedBody.angularDrag = oldAngularDrag;
+            GameObject.Find("Rigidbody dragger").GetComponent<SpringJoint>().connectedBody = null;
+
+        }
     }
 }
