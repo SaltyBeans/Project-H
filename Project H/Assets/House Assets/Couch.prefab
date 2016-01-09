@@ -115,8 +115,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 420074}
   - 33: {fileID: 3308078}
-  - 64: {fileID: 6410736}
   - 23: {fileID: 2395726}
+  - 65: {fileID: 6599654}
   m_Layer: 0
   m_Name: CouchStorageSupportBottom
   m_TagString: Untagged
@@ -635,18 +635,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6410736
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179068}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6501628
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -731,6 +719,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6599654
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: -0.049865425, z: 9.999999}
+  m_Center: {x: -0.0000038146973, y: 0.024930863, z: -0.0000021457672}
 --- !u!65 &6599946
 BoxCollider:
   m_ObjectHideFlags: 1

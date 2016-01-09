@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Mat_NPCFOV
+  m_Name: Untitled (1)-Translucent_Glass_Gray
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 5
@@ -103,7 +103,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -128,10 +128,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _RimPower
-        second: 1
     m_Colors:
       data:
         first:
@@ -140,12 +136,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.11724138, g: 0, b: 1, a: 0.184}
-      data:
-        first:
-          name: _ColorTint
-        second: {r: 0.8455882, g: 0.39792383, b: 0.39792383, a: 0}
-      data:
-        first:
-          name: _RimColor
-        second: {r: 0, g: 0.5862069, b: 1, a: 0}
+        second: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5}
