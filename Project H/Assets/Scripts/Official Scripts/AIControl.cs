@@ -127,15 +127,12 @@ public class AIControl : MonoBehaviour
                     lookedAtObjects = true; //Looked at every object in the room
                     lookingState = false;       //Change the looking state to walking.
 
-<<<<<<< HEAD
                     if (targetCounter < target.Length)//If this is not the last room...
                     { 
                         targetCounter++;//Change the walking target.
                     }
-=======
                     if (targetCounter  < target.Length ) //If this is not the last room...
                         targetCounter++;            //Change the walking target.
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
 
                     lookCounter = 0;            //Reset the looking counter.
                     agent.Resume();            //Resume the navigation.

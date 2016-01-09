@@ -1967,11 +1967,11 @@ Transform:
   - {fileID: 371469112}
   - {fileID: 2092848791}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 9
-=======
+
   m_RootOrder: 3
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!1001 &105661369
 Prefab:
   m_ObjectHideFlags: 0
@@ -4191,11 +4191,11 @@ RectTransform:
   - {fileID: 1483824616}
   - {fileID: 865798879}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 12
-=======
+
   m_RootOrder: 7
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -11596,11 +11596,11 @@ Transform:
   m_Children:
   - {fileID: 1138988300}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 11
-=======
+
   m_RootOrder: 6
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!1 &852976350
 GameObject:
   m_ObjectHideFlags: 0
@@ -14905,13 +14905,13 @@ Transform:
   m_LocalPosition: {x: 1.7246423, y: 0.38366425, z: -27.99895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-<<<<<<< HEAD
+
   m_Father: {fileID: 0}
   m_RootOrder: 15
-=======
+
   m_Father: {fileID: 1150994089}
   m_RootOrder: 0
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!4 &1101057320 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 9bc8f868f3d5ed340b8094fa8ac36dc9, type: 3}
@@ -21632,11 +21632,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 14
-=======
+
   m_RootOrder: 9
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!114 &1567343815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24983,11 +24983,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 13
-=======
+
   m_RootOrder: 8
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!120 &1878396624
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -25374,11 +25374,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 10
-=======
+
   m_RootOrder: 5
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!1 &1916493648
 GameObject:
   m_ObjectHideFlags: 0
@@ -26306,11 +26306,11 @@ Transform:
   - {fileID: 1210650395}
   - {fileID: 1108422303}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_RootOrder: 7
-=======
+
   m_RootOrder: 2
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 --- !u!1 &1980071198
 GameObject:
   m_ObjectHideFlags: 0

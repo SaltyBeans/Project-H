@@ -4,25 +4,19 @@ using System.Collections;
 public class MoneyScript10K : MonoBehaviour
 {
     private int moneyAmount { get; set; }
-<<<<<<< HEAD
     //Right now, the amount is set at 10.000$.
-=======
 
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
+
 
     float oldDrag;
     float oldAngularDrag;
-    public readonly int moneyType = 10000;
+    public readonly int moneyType = 100000;
 
     void Start()
     {
-<<<<<<< HEAD
-        moneyAmount = 10000;
-=======
         moneyAmount = 100000;
         oldDrag = GetComponent<Rigidbody>().drag;
         oldAngularDrag = GetComponent<Rigidbody>().angularDrag;
->>>>>>> 267f879324cc2f490ec13cb5e54134f7fac68742
     }
 
     public int getMoneyAmount()
