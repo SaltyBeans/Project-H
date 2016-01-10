@@ -31,7 +31,7 @@ public class HidingSpot : MonoBehaviour
         if (other.collider.tag != "Money")
             return;
 
-        MoneyScript moneyScript = other.gameObject.GetComponent<MoneyScript>();
+        MoneyScript10K moneyScript = other.gameObject.GetComponent<MoneyScript10K>();
 
         int moneyAmount = moneyScript.getMoneyAmount();
 
