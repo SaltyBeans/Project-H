@@ -77,23 +77,10 @@ public class Crosshair : MonoBehaviour {
                     }
                 }
             }
-        }
-        else
-        {
-            infoText.text = null;
-        }
 
-
-        
-
-    }
-    void FixedUpdate()
-    {
-        if (Physics.Raycast ( cam.transform.position , cam.transform.forward , out hit ,5.0f) )
-        {
-            if (hit.collider.tag == "hideSpot")
+            else if (hit.collider.tag == "hideSpot")
             {
-                    infoText.text = hit.collider.name + ": " + hit.collider.GetComponent<HidingSpot>().getAmount() +" / " +hit.collider.GetComponent<HidingSpot>().getMaxAmount()+"$";               
+                infoText.text = hit.collider.name + ": " + hit.collider.GetComponent<HidingSpot>().getAmount() + " / " + hit.collider.GetComponent<HidingSpot>().getMaxAmount() + "$";
             }
             else if (hit.collider.tag == "Money")
             {
@@ -108,19 +95,19 @@ public class Crosshair : MonoBehaviour {
                 else
                 {
                     infoText.text = hit.collider.GetComponent<MoneyScript>().getMoneyAmount() + "$";
-                    
                 }
-                
+
             }
+
             else
             {
                 infoText.text = null;
             }
         }
-        else
-        {
-            infoText.text = null;
-        }
+        
+
+
+        
 
     }
 
