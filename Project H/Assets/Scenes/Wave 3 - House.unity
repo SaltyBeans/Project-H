@@ -2720,10 +2720,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 5992826, guid: dc9f97b8ee7264b4083434ace484b2fe, type: 2}
-      propertyPath: m_EnableCollision
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc9f97b8ee7264b4083434ace484b2fe, type: 2}
   m_IsPrefabParent: 0
@@ -12079,7 +12075,7 @@ Transform:
   - {fileID: 558091963}
   - {fileID: 1377130219}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &885384008
 GameObject:
   m_ObjectHideFlags: 0
