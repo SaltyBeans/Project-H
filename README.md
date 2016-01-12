@@ -17,6 +17,7 @@ Project's Trello page: https://trello.com/b/ObA4xm3u/project-h
 
 Controls: 
 WASD - Movement
+
 E - Interaction
 F2 - Enable/Disable FOV Renderer
 Hold Left Click - Move Objects
