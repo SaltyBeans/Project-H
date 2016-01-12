@@ -19,10 +19,15 @@ Controls:
 WASD - Movement
 
 E - Interaction
+
 F2 - Enable/Disable FOV Renderer
+
 Hold Left Click - Move Objects
+
 F10 - Previous Track
+
 F11 - Play/Stop Track
+
 F12 - Next Track
 
 Made in Unity Personal Edition v5.3.0f4
