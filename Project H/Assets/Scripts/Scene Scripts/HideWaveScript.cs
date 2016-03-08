@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class HideWaveScript : MonoBehaviour {
-    
+public class HideWaveScript : MonoBehaviour
+{
+
     [SerializeField]
-    private float hideTime=30f;
+    public float hideTime = 30f;
 
     private float minute;
     private float second;
@@ -18,13 +18,13 @@ public class HideWaveScript : MonoBehaviour {
 
 
     public GameObject Official;
-    //public Transform officialPosition;
 
     void Start()
     {
         Official.SetActive(false);
     }
-	void Update () {
+    void Update()
+    {
         if (hideTime > 0)
         {
             hideTime -= 1.0f * Time.deltaTime;
@@ -35,6 +35,7 @@ public class HideWaveScript : MonoBehaviour {
         }
         else
         {
+            hideTime = 0.0f;
             timerDisplay.text = "";
             objectiveDisplay.text = "Objective: Act natural.";
             if (officialSpawned == false)
@@ -43,5 +44,5 @@ public class HideWaveScript : MonoBehaviour {
                 officialSpawned = true;
             }
         }
-	}
+    }
 }

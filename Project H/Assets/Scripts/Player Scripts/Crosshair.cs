@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Crosshair : MonoBehaviour {
+public class Crosshair : MonoBehaviour
+{
     public Texture2D crosshair;
     public Rect pos;
     static bool OriginalOn = true;
-    public bool CursorLock= false;
+    public bool CursorLock = false;
     public TextMesh infoText;
     RaycastHit hit;
     public Camera cam;
@@ -14,7 +14,8 @@ public class Crosshair : MonoBehaviour {
     private GameObject official;
 
     private MeshRenderer FOVRender;
-	void Start () {
+    void Start()
+    {
         Component[] renderers = official.GetComponentsInChildren<MeshRenderer>();
 
         foreach (MeshRenderer renderer in renderers)
@@ -24,7 +25,7 @@ public class Crosshair : MonoBehaviour {
         pos = new Rect((Screen.width - crosshair.width) / 2, (Screen.height - crosshair.height) / 2, crosshair.width, crosshair.height);
         infoText.text = null;
 
-        
+
     }
 
     void Update()
@@ -35,7 +36,7 @@ public class Crosshair : MonoBehaviour {
             {
                 CursorLock = false;
             }
-            else if(CursorLock == false)
+            else if (CursorLock == false)
             {
                 CursorLock = true;
             }
@@ -43,13 +44,13 @@ public class Crosshair : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F2))
         {
- 
+
             if (FOVRender.enabled && official.activeSelf)
                 FOVRender.enabled = false;
 
             else if (!FOVRender.enabled && official.activeSelf)
                 FOVRender.enabled = true;
-            
+
 
         }
 
@@ -104,14 +105,15 @@ public class Crosshair : MonoBehaviour {
                 infoText.text = null;
             }
         }
-        
 
 
-        
+
+
 
     }
 
-	void OnGUI () {
+    void OnGUI()
+    {
         if (CursorLock == true)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -126,5 +128,5 @@ public class Crosshair : MonoBehaviour {
         {
             GUI.DrawTexture(pos, crosshair);
         }
-	}
+    }
 }

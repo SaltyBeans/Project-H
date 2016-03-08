@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 public class WaveBehaviour : MonoBehaviour
 {
@@ -11,13 +11,15 @@ public class WaveBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject EndWaveTexture;
 
+    private HideWaveScript WaveScript;
+
     [SerializeField]
     private Text Text1;
     [SerializeField]
     private Text Text2;
     [SerializeField]
     private Text Text3;
-    
+
     bool textUp = false;
     private Text currentText;
 
@@ -26,6 +28,8 @@ public class WaveBehaviour : MonoBehaviour
     void Awake()
     {
         setComponents(false);
+
+        WaveScript = GetComponent<HideWaveScript>();
 
         if (Application.loadedLevel == 1)
         {
@@ -37,7 +41,7 @@ public class WaveBehaviour : MonoBehaviour
             StartCoroutine(FadeTo(Text1, 1.0f, 2.0f));
 
             EndWaveTexture.SetActive(true);
-            textUp = true;            
+            textUp = true;
         }
         if (Application.loadedLevel == 2)
         {
@@ -135,18 +139,18 @@ public class WaveBehaviour : MonoBehaviour
                     EndWaveTexture.SetActive(true);
                     setComponents(false);
                     StartCoroutine(FadeTo(Text1, 1.0f, 2.0f));
-                   
+
                 }
 
             }
         }
-        
+
 
 
 
         if (textUp == true && currentText.color.a >= 0.990f)
         {
-            
+
             if (currentText == Text1)
             {
                 StartCoroutine(FadeTo(Text2, 1.0f, 3.0f));
@@ -180,7 +184,7 @@ public class WaveBehaviour : MonoBehaviour
                         Application.Quit();
                     }
                 }
-                
+
             }
 
         }
