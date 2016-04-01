@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class TelephoneBehaviour : MonoBehaviour {
+public class TelephoneBehaviour : MonoBehaviour
+{
 
     HideWaveScript WaveScript;
 
@@ -19,8 +19,6 @@ public class TelephoneBehaviour : MonoBehaviour {
     }
     public void EndTheWave()
     {
-        
-            WaveScript.hideTime = 0;
-        
+        WaveScript.hideTime = 0;
     }
 }

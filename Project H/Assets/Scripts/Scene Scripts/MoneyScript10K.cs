@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class MoneyScript10K : MonoBehaviour
 {
@@ -27,6 +26,8 @@ public class MoneyScript10K : MonoBehaviour
     public void setMoneyAmout(int amount)
     {
         moneyAmount = amount;
+
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, (amount / 10000f) * 4.5f, gameObject.transform.localScale.z);
     }
 
     void OnTriggerEnter(Collider other)

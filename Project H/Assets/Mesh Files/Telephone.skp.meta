@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: 283c7bbf151e6af4e8cdfd4c79089cf3
+timeCreated: 1459490574
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b000000
+  assetHash:
+    serializedVersion: 2
+    Hash: deecd25d54c89ff091574924a348003a
+  longitude: -43.32636890313448
+  latitude: -22.821424074706595
+  northCorrection: 359.3505032695304
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 0.3269478, y: 0.19833834, z: -0.38803798}
+      lookAt: {x: 0.1951853, y: 0.10339549, z: -0.09288081}
+      up: {x: -0.11488262, y: 0.9594663, z: 0.25734508}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: button
+    100002: button 1
+    100004: button 10
+    100006: button 11
+    100008: button 12
+    100010: button 13
+    100012: button 14
+    100014: button 15
+    100016: button 2
+    100018: button 3
+    100020: button 4
+    100022: button 5
+    100024: button 6
+    100026: button 7
+    100028: button 8
+    100030: button 9
+    100032: Group 2
+    100034: name plate
+    100036: name plate 1
+    100038: name plate 2
+    100040: name plate 3
+    100042: //RootNode
+    400000: button
+    400002: button 1
+    400004: button 10
+    400006: button 11
+    400008: button 12
+    400010: button 13
+    400012: button 14
+    400014: button 15
+    400016: button 2
+    400018: button 3
+    400020: button 4
+    400022: button 5
+    400024: button 6
+    400026: button 7
+    400028: button 8
+    400030: button 9
+    400032: Group 2
+    400034: name plate
+    400036: name plate 1
+    400038: name plate 2
+    400040: name plate 3
+    400042: //RootNode
+    2300000: button
+    2300002: button 1
+    2300004: button 10
+    2300006: button 11
+    2300008: button 12
+    2300010: button 13
+    2300012: button 14
+    2300014: button 15
+    2300016: button 2
+    2300018: button 3
+    2300020: button 4
+    2300022: button 5
+    2300024: button 6
+    2300026: button 7
+    2300028: button 8
+    2300030: button 9
+    2300032: Group 2
+    2300034: name plate
+    2300036: name plate 1
+    2300038: name plate 2
+    2300040: name plate 3
+    2300042: //RootNode
+    3300000: button
+    3300002: button 1
+    3300004: button 10
+    3300006: button 11
+    3300008: button 12
+    3300010: button 13
+    3300012: button 14
+    3300014: button 15
+    3300016: button 2
+    3300018: button 3
+    3300020: button 4
+    3300022: button 5
+    3300024: button 6
+    3300026: button 7
+    3300028: button 8
+    3300030: button 9
+    3300032: Group 2
+    3300034: name plate
+    3300036: name plate 1
+    3300038: name plate 2
+    3300040: name plate 3
+    3300042: //RootNode
+    4300000: Mesh Phone_Desk#1
+    4300002: Mesh Group 2
+    4300004: Mesh button
+    4300006: Mesh name plate
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

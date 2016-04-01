@@ -73,9 +73,7 @@ public class Crosshair : MonoBehaviour
                     infoText.text = "Press [E] to Open";
 
                     if (Input.GetKeyDown(KeyCode.E))
-                    {
                         hit.collider.GetComponent<DoorScript>().OpenDoor();
-                    }
                 }
             }
 
