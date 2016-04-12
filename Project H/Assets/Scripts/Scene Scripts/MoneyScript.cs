@@ -27,7 +27,7 @@ public class MoneyScript : MonoBehaviour
         return moneyAmount;
     }
 
-    public void setMoneyAmout(int amount)
+    public void setMoneyAmount(int amount)
     {
         moneyAmount = amount;
 
