@@ -30,5 +30,7 @@ public class MoneyScript : MonoBehaviour
     public void setMoneyAmout(int amount)
     {
         moneyAmount = amount;
+
+
     }
 }

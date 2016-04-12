@@ -169,7 +169,7 @@ public class WaveBehaviour : MonoBehaviour
                 setComponents(true);
                 if (levelFinished)
                 {
-                    if (successfulPlayer && Application.loadedLevel != 3)   //If player is succesfull in 1st-2nd waves.
+                    if (successfulPlayer && Application.loadedLevel != 3)   //If player is successful in 1st-2nd waves.
                     {
                         GetComponent<ClickToLoadAsync>().ClickAsync(Application.loadedLevel + 1);
                     }
@@ -179,7 +179,7 @@ public class WaveBehaviour : MonoBehaviour
                         Application.Quit();
                     }
 
-                    else if (!successfulPlayer) // if player is not successsful
+                    else if (!successfulPlayer) // if player is not successful
                     {
                         Application.Quit();
                     }
