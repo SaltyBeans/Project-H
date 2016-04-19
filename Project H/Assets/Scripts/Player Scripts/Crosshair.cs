@@ -9,6 +9,7 @@ public class Crosshair : MonoBehaviour
     public TextMesh infoText;
     RaycastHit hit;
     public Camera cam;
+    public MoneyHoldingScript HoldScript;
 
     [SerializeField]
     private GameObject official;
@@ -54,6 +55,10 @@ public class Crosshair : MonoBehaviour
 
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            HoldScript.DropMoney();
+        }
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f))
         {
@@ -76,20 +81,17 @@ public class Crosshair : MonoBehaviour
                         hit.collider.GetComponent<DoorScript>().OpenDoor();
                 }
             }
-
-            else if (hit.collider.tag == "hideSpot")
-            {
-                infoText.text = hit.collider.name + ": " + hit.collider.GetComponent<HidingSpot>().getAmount() + " / " + hit.collider.GetComponent<HidingSpot>().getMaxAmount() + "$";
-            }
             else if (hit.collider.tag == "Money")
             {
                 if (hit.collider.GetComponent<MoneyScript>() == null)
                 {
                     infoText.text = hit.collider.GetComponent<MoneyScript10K>().getMoneyAmount() + "$";
-                    if (Input.GetKeyDown(KeyCode.X))
+                    
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        Destroy(hit.collider.gameObject);
+                        HoldScript.HoldMoney(hit.collider.gameObject);
                     }
+
                 }
                 else
                 {
@@ -103,11 +105,6 @@ public class Crosshair : MonoBehaviour
                 infoText.text = null;
             }
         }
-
-
-
-
-
     }
 
     void OnGUI()
