@@ -86,7 +86,7 @@ public class Crosshair : MonoBehaviour
                 if (hit.collider.GetComponent<MoneyScript>() == null)
                 {
                     infoText.text = hit.collider.GetComponent<MoneyScript10K>().getMoneyAmount() + "$";
-                    
+
                     if (Input.GetMouseButtonDown(0))
                     {
                         HoldScript.HoldMoney(hit.collider.gameObject);

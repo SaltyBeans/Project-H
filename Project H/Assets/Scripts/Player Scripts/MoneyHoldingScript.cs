@@ -1,45 +1,52 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityStandardAssets.Utility;
 
-public class MoneyHoldingScript : MonoBehaviour {
-
+public class MoneyHoldingScript : MonoBehaviour
+{
+    [Range(0, 15)]
+    public int holdNumber; //How many stacks can the player hold.
     public GameObject[] fingers;
     public GameObject palm;
     private GameObject heldMoney;
-
+    private Stack<GameObject> moneyStack;
+    private DragRigidbody dragScript;
     void Start()
     {
-        heldMoney = null; 
+        heldMoney = null;
+        dragScript = GetComponentInParent<DragRigidbody>();
+        moneyStack = new Stack<GameObject>();
     }
 
     public void HoldMoney(GameObject money)
     {
-        if (heldMoney == null) //Only a single money stack can be held at once (Can be changed)
+        if (moneyStack.Count < holdNumber && !moneyStack.Contains(money)) //If there is room on the hand && if already picked that money up
         {
-            heldMoney = money;
-            money.AddComponent<FixedJoint>();
+            moneyStack.Push(money);
             money.transform.rotation = palm.transform.rotation;
             money.transform.position = palm.transform.position;
             money.GetComponent<Collider>().enabled = false;
             money.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            money.GetComponent<FixedJoint>().connectedAnchor = palm.transform.localPosition;
-            money.GetComponent<FixedJoint>().connectedBody = palm.GetComponent<Rigidbody>();
-
-            //animate finger closing
-
-        }
-        else
-        {
-            return; //Hands already full? return
+            money.transform.parent = palm.transform.parent;    //Money should move with the hand.
+            money.transform.localPosition += new Vector3(0, moneyStack.Count * 0.35f, 0); //Offset the money so they can get stacked on the hand.
+            money.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
     public void DropMoney()
     {
-        heldMoney.GetComponent<Collider>().enabled = true;
-        Destroy(heldMoney.GetComponent<FixedJoint>());
-        heldMoney = null;
-        //animate finger releasing
+        if (moneyStack.Count > 0) //If there is at least one stack on the hand.
+        {
+            GameObject nextMoney = moneyStack.Peek();
+            moneyStack.Pop();
+            nextMoney.GetComponent<Collider>().enabled = true;
+            nextMoney.GetComponent<Rigidbody>().isKinematic = false;
+            nextMoney.transform.parent = null;
+            //dragScript.enabled = true;
+
+            //animate finger releasing            
+        }
+
     }
 
 }
