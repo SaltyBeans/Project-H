@@ -11,11 +11,37 @@ public class MoneyHoldingScript : MonoBehaviour
     private GameObject heldMoney;
     private Stack<GameObject> moneyStack;
     private DragRigidbody dragScript;
+    private Crosshair crosshair;
     void Start()
     {
         heldMoney = null;
         dragScript = GetComponentInParent<DragRigidbody>();
         moneyStack = new Stack<GameObject>();
+        crosshair = GetComponentInParent<Crosshair>();
+
+        if (crosshair == null)
+        {
+            Debug.LogError("Need Crosshair script on the character!");
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            DropMoney();
+        }
+
+        else if (crosshair.GetHit().collider != null && crosshair.GetHit().collider.tag == "Money")
+        {
+            if (crosshair.GetHit().collider.GetComponent<MoneyScript>() == null) // Money has collider script attached.
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    HoldMoney(crosshair.GetHit().collider.gameObject);
+                }
+            }
+        }
     }
 
     public void HoldMoney(GameObject money)

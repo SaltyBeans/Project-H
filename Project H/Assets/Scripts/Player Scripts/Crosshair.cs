@@ -55,49 +55,24 @@ public class Crosshair : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f)) //Show on focus object's info.
         {
-            HoldScript.DropMoney();
-        }
-
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f))
-        {
-            if (hit.collider.tag == "door")
+            if (hit.collider.tag == "door") //Show door info.
             {
                 if (hit.collider.GetComponent<DoorScript>().getState() == true)
-                {
                     infoText.text = "Press [E] to Close";
 
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        hit.collider.GetComponent<DoorScript>().CloseDoor();
-                    }
-                }
                 else
-                {
                     infoText.text = "Press [E] to Open";
 
-                    if (Input.GetKeyDown(KeyCode.E))
-                        hit.collider.GetComponent<DoorScript>().OpenDoor();
-                }
             }
-            else if (hit.collider.tag == "Money")
+            else if (hit.collider.tag == "Money") //Show money info.
             {
                 if (hit.collider.GetComponent<MoneyScript>() == null)
-                {
                     infoText.text = hit.collider.GetComponent<MoneyScript10K>().getMoneyAmount() + "$";
 
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        HoldScript.HoldMoney(hit.collider.gameObject);
-                    }
-
-                }
                 else
-                {
                     infoText.text = hit.collider.GetComponent<MoneyScript>().getMoneyAmount() + "$";
-                }
-
             }
 
             else
@@ -105,6 +80,15 @@ public class Crosshair : MonoBehaviour
                 infoText.text = null;
             }
         }
+    }
+
+    /// <summary>
+    /// Returns the RaycastHit pointer, what's in front of the player at the last frame.
+    /// </summary>
+    /// <returns>Hit. Object that was in front of the player at the last frame.</returns>
+    public RaycastHit GetHit()
+    {
+        return hit;
     }
 
     void OnGUI()
