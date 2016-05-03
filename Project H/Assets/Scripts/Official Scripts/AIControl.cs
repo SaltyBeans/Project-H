@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter))]
@@ -113,7 +110,7 @@ public class AIControl : MonoBehaviour
         {
             character.Move(Vector3.zero, false, false);
 
-            if (lookedAtObjects == false)   
+            if (lookedAtObjects == false)
             {
 
                 if (lookCounter < getRoom().Length && Time.time - time > lookForSeconds) // LookCounter is lower than length and current time - last looked time is bigger than lookForSeconds
@@ -124,12 +121,12 @@ public class AIControl : MonoBehaviour
 
                 if (lookCounter == getRoom().Length)    //Looked at all the objects. Reset the parameters.
                 {
-                    lookedAtObjects = true; //Looked at every object in the room
+                    lookedAtObjects = true;   //Looked at every object in the room
                     lookingState = false;       //Change the looking state to walking.
 
                     if (targetCounter < target.Length)//If this is not the last room...
-                    { 
-                        targetCounter++;//Change the walking target.
+                    {
+                        targetCounter++;                    //Change the walking target.
                     }
 
                     lookCounter = 0;            //Reset the looking counter.

@@ -13,7 +13,6 @@ GameObject:
   - 54: {fileID: 5456274}
   - 65: {fileID: 6532626}
   - 114: {fileID: 11477244}
-  - 114: {fileID: 11450438}
   m_Layer: 0
   m_Name: $10,000
   m_TagString: Money
@@ -96,17 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1524, y: 0.0127, z: 0.0635}
   m_Center: {x: 0.0762, y: 0.00635, z: 0.03175}
---- !u!114 &11450438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bda152667039014a80b12cf55e29745, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11477244
 MonoBehaviour:
   m_ObjectHideFlags: 1

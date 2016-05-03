@@ -979,16 +979,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 139722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3dfb17a87893249b612b9924dba86e, type: 3}
+  m_Script: {fileID: 11500000, guid: 56d361920ddcbc24ca0b3b406527406b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdNumber: 5
   fingers:
-  - {fileID: 105852}
-  - {fileID: 132930}
-  - {fileID: 180384}
-  - {fileID: 148036}
-  - {fileID: 103830}
-  palm: {fileID: 143898}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  palm: {fileID: 0}
 --- !u!114 &11479060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1029,7 +1030,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fbd341f8dc0661c45a540e769fc90da6, type: 3}
   - {fileID: 8300000, guid: c9e3b6c36f71c3f4881aff83e4ba8cd2, type: 3}
   - {fileID: 8300000, guid: 41baa83869fffd5469c97b46d4b6ad1d, type: 3}
-  - {fileID: 8300000, guid: 0e0e52473f5fa5d4da41cd79c6a330ea, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: 67f00578df0b5e141aa9c5d983ea1087, type: 3}
   - {fileID: 8300000, guid: 2b46547e97e973c41bd0397f3cce3d85, type: 3}
 --- !u!143 &14339596

@@ -75,6 +75,11 @@ public class Crosshair : MonoBehaviour
                     infoText.text = hit.collider.GetComponent<MoneyScript>().getMoneyAmount() + "$";
             }
 
+            else if (hit.collider.tag == "Telephone") //Show phone info. TODO: check if the timer has ended, if not, then show the info.
+            {
+                infoText.text = "Click to end the timer.";
+            }
+
             else
             {
                 infoText.text = null;

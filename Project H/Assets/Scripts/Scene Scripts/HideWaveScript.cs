@@ -33,7 +33,7 @@ public class HideWaveScript : MonoBehaviour
             timerDisplay.text = "Time Left: " + string.Format("{0:00}:{1:00}", minute, second);
             objectiveDisplay.text = "Objective: Hide the money until the time runs out.";
         }
-        else
+        else    //TODO: breakup redundant loop on every frame.
         {
             hideTime = 0.0f;
             timerDisplay.text = "";

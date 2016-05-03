@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class MusicPlayer : MonoBehaviour {
+public class MusicPlayer : MonoBehaviour
+{
 
     private bool isPlaying = false;
 
@@ -15,16 +15,17 @@ public class MusicPlayer : MonoBehaviour {
 
     private GameObject BackgroundMusic;
 
-    void Start () {
+    void Start()
+    {
 
         musicSource.clip = musicClips[0];
         musicSource.playOnAwake = false;
         BackgroundMusic = GameObject.Find("BackgroundMusic");
-        BackgroundMusic.SetActive(false);
     }
-    
-    
-    void Update () {
+
+
+    void Update()
+    {
 
         if (!musicSource.isPlaying && !playerStoppedMusic)
         {

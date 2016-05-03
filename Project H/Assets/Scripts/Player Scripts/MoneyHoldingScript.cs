@@ -68,9 +68,8 @@ public class MoneyHoldingScript : MonoBehaviour
             nextMoney.GetComponent<Collider>().enabled = true;
             nextMoney.GetComponent<Rigidbody>().isKinematic = false;
             nextMoney.transform.parent = null;
-            //dragScript.enabled = true;
 
-            //animate finger releasing            
+            //TODO: animate finger releasing            
         }
 
     }

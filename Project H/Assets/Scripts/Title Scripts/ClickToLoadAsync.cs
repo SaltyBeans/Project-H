@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ClickToLoadAsync : MonoBehaviour
@@ -10,7 +10,7 @@ public class ClickToLoadAsync : MonoBehaviour
 
 
     private AsyncOperation async;
-    
+
     public void ClickAsync(int level)
     {
         loadingImage.SetActive(true);
