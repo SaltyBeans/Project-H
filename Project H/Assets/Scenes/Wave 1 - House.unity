@@ -1520,7 +1520,7 @@ Prefab:
     - target: {fileID: 11479060, guid: 4d36fbca77e0bb6409363347327b1adb, type: 2}
       propertyPath: crosshair
       value: 
-      objectReference: {fileID: 2800000, guid: 95f4f40bf4739c74d9a70434856770e5, type: 3}
+      objectReference: {fileID: 2800000, guid: fe7d4451d20d85e4f90b1c46b609f7a0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d36fbca77e0bb6409363347327b1adb, type: 2}
   m_IsPrefabParent: 0

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.Utility;
 
 public class MoneyHoldingScript : MonoBehaviour
 {
@@ -8,14 +7,10 @@ public class MoneyHoldingScript : MonoBehaviour
     public int holdNumber; //How many stacks can the player hold.
     public GameObject[] fingers;
     public GameObject palm;
-    private GameObject heldMoney;
     private Stack<GameObject> moneyStack;
-    private DragRigidbody dragScript;
     private Crosshair crosshair;
     void Start()
     {
-        heldMoney = null;
-        dragScript = GetComponentInParent<DragRigidbody>();
         moneyStack = new Stack<GameObject>();
         crosshair = GetComponentInParent<Crosshair>();
 

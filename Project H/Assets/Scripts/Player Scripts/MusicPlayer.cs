@@ -2,9 +2,6 @@
 
 public class MusicPlayer : MonoBehaviour
 {
-
-    private bool isPlaying = false;
-
     public AudioSource musicSource;
 
     public AudioClip[] musicClips;
@@ -13,14 +10,11 @@ public class MusicPlayer : MonoBehaviour
 
     private bool playerStoppedMusic = false;
 
-    private GameObject BackgroundMusic;
-
     void Start()
     {
 
         musicSource.clip = musicClips[0];
         musicSource.playOnAwake = false;
-        BackgroundMusic = GameObject.Find("BackgroundMusic");
     }
 
 

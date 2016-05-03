@@ -14,8 +14,6 @@ public class WaveBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject EndWaveTexture;
 
-    private HideWaveScript WaveScript;
-
     [SerializeField]
     private Text Text1;
     [SerializeField]
@@ -34,7 +32,6 @@ public class WaveBehaviour : MonoBehaviour
     void Awake()
     {
         setComponents(false); //Disable the character so it won't move.
-        WaveScript = GetComponent<HideWaveScript>();
         GameObject.Destroy(GameObject.Find("BackgroundMusic"));//Kill the title music.
         playerStartingTransform = GameObject.Find("SpawnPositions/PlayerSpawnPosition").GetComponent<Transform>();
         officialStartingTransform = GameObject.Find("SpawnPositions/OfficialSpawnPosition").GetComponent<Transform>();
@@ -183,8 +180,8 @@ public class WaveBehaviour : MonoBehaviour
         player.transform.position = playerStartingTransform.position; //Reset the position of the player.
         player.transform.rotation = playerStartingTransform.rotation; //Reset the rotation of the player.
 
-        official.transform.position = playerStartingTransform.position; //Reset the position of the official.
-        official.transform.rotation = playerStartingTransform.rotation; //Reset the rotation of the official.
+        official.transform.position = officialStartingTransform.position; //Reset the position of the official.
+        official.transform.rotation = officialStartingTransform.rotation; //Reset the rotation of the official.
         official.SetActive(false); //Disable the official.
 
         //TODO: Reset the hide timer.
