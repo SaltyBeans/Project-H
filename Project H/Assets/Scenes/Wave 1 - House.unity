@@ -550,7 +550,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!4 &29689219 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400032, guid: 78fa5f4eb86c36849876519b8dca62d1, type: 3}
@@ -9675,7 +9675,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 484776, guid: 66edd5fd73202154e977a719d9f7a2fd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.65
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 484776, guid: 66edd5fd73202154e977a719d9f7a2fd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9814,33 +9814,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 812190992}
   m_Mesh: {fileID: 4300020, guid: 0ba12c5f92829bd40a26db4540c7f31d, type: 3}
---- !u!1 &815398285
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 815398286}
-  m_Layer: 0
-  m_Name: MoneySpawnPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &815398286
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815398285}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.369, y: 0.77, z: -1.003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1150994089}
-  m_RootOrder: 0
 --- !u!1 &816658237
 GameObject:
   m_ObjectHideFlags: 0
@@ -10098,7 +10071,7 @@ Transform:
   - {fileID: 1386318139}
   - {fileID: 1401930626}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &839070603
 GameObject:
   m_ObjectHideFlags: 0
@@ -13309,34 +13282,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 839541888}
   m_RootOrder: 0
---- !u!1 &1150994088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1150994089}
-  m_Layer: 0
-  m_Name: SpawnPositions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1150994089
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1150994088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2553577, y: 0.30233574, z: 3.0459492}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 815398286}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
 --- !u!1 &1168662903
 GameObject:
   m_ObjectHideFlags: 0
@@ -15847,7 +15792,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1386318138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.279, y: 1.5619999, z: 25.082}
+  m_LocalPosition: {x: 3, y: 1.556, z: 22.771}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 837755120}
@@ -18657,7 +18602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!114 &1567343815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18680,6 +18625,8 @@ MonoBehaviour:
   Text1: {fileID: 1536522534}
   Text2: {fileID: 1893030216}
   Text3: {fileID: 796805267}
+  SpawnSquare: {x: 4, y: 2, z: 2.5}
+  moneyPrefab: {fileID: 156004, guid: 959efc141b1c5214693a5111f6a71a59, type: 2}
 --- !u!114 &1567343816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21398,7 +21345,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!120 &1878396624
 LineRenderer:
   m_ObjectHideFlags: 0

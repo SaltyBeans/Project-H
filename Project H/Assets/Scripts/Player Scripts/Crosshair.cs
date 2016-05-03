@@ -68,11 +68,7 @@ public class Crosshair : MonoBehaviour
             }
             else if (hit.collider.tag == "Money") //Show money info.
             {
-                if (hit.collider.GetComponent<MoneyScript>() == null)
-                    infoText.text = hit.collider.GetComponent<MoneyScript10K>().getMoneyAmount() + "$";
-
-                else
-                    infoText.text = hit.collider.GetComponent<MoneyScript>().getMoneyAmount() + "$";
+                infoText.text = hit.collider.GetComponent<MoneyScript10K>().getMoneyAmount() + "$";
             }
 
             else if (hit.collider.tag == "Telephone") //Show phone info. TODO: check if the timer has ended, if not, then show the info.

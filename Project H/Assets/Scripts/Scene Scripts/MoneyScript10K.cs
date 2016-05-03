@@ -11,7 +11,7 @@ public class MoneyScript10K : MonoBehaviour
     float oldAngularDrag;
     public readonly int moneyType = 10000;
 
-    void Start()
+    void Awake()
     {
         moneyAmount = 10000;
         oldDrag = GetComponent<Rigidbody>().drag;

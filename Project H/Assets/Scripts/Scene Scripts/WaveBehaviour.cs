@@ -48,6 +48,12 @@ public class WaveBehaviour : MonoBehaviour
             EndTheWave();
         }
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            spawnMoney(5427951, moneySpawnTransform.position);
+        }
+
+
         if (textUp)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //Skip option.
@@ -207,6 +213,50 @@ public class WaveBehaviour : MonoBehaviour
             item.enabled = _state;
     }
 
+    [SerializeField]
+    private Vector3 SpawnSquare;
+
+    [SerializeField]
+    private GameObject moneyPrefab;
+
+    void spawnMoney(int amount, Vector3 spawnCenter)
+    {
+        int numberOfFullStacks = 0;
+        int numberOfBelowMaxStacks = 0;
+        int maxMoneyAmount = 10000;
+
+        numberOfFullStacks = Mathf.FloorToInt(amount / maxMoneyAmount);
+        if (numberOfFullStacks == 0 || amount % maxMoneyAmount > 0)
+            numberOfBelowMaxStacks++; //This will be either zero or one, maybe boolean here.
+
+
+        int spawnCount = 0;
+
+        for (int j = 0; j < numberOfFullStacks; j++)
+        {
+            Vector3 post = spawnCenter;
+            GameObject money = GameObject.Instantiate(moneyPrefab, post, Quaternion.identity) as GameObject;
+            post.x += (spawnCount * money.GetComponent<BoxCollider>().bounds.size.x) % SpawnSquare.x;
+            post.z += ((Mathf.FloorToInt((spawnCount * money.GetComponent<BoxCollider>().bounds.size.x) / SpawnSquare.x)) * money.GetComponent<BoxCollider>().bounds.size.z) % SpawnSquare.z;
+            post.y += (spawnCount / ((SpawnSquare.x / money.GetComponent<BoxCollider>().bounds.size.x) *
+                                                     (SpawnSquare.z / money.GetComponent<BoxCollider>().bounds.size.z)) * money.GetComponent<BoxCollider>().bounds.size.y);
+            money.transform.position = post;
+            money.GetComponent<MoneyScript10K>().setMoneyAmout(maxMoneyAmount);
+            spawnCount++;
+        }
+
+        for (int i = 0; i < numberOfBelowMaxStacks; i++)
+        {
+            Vector3 post = spawnCenter;
+            GameObject money = GameObject.Instantiate(moneyPrefab, post, Quaternion.identity) as GameObject;
+            post.x += (spawnCount * money.GetComponent<BoxCollider>().bounds.size.x) % SpawnSquare.x;
+            post.z += ((Mathf.FloorToInt((spawnCount * money.GetComponent<BoxCollider>().bounds.size.x) / SpawnSquare.x)) * money.GetComponent<BoxCollider>().bounds.size.z) % SpawnSquare.z;
+            post.y += (spawnCount / ((SpawnSquare.x / money.GetComponent<BoxCollider>().bounds.size.x) *
+                                                     (SpawnSquare.z / money.GetComponent<BoxCollider>().bounds.size.z)) * money.GetComponent<BoxCollider>().bounds.size.y);
+            money.transform.position = post;
+            money.GetComponent<MoneyScript10K>().setMoneyAmout(amount % maxMoneyAmount);
+        }
+    }
 
 
 }
