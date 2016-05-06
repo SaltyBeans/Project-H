@@ -32,7 +32,6 @@ obj/
 # Unity generated #
 # ===================================== #
 *.pidb.meta
-*.meta
 sysinfo.txt
 
 # ============ #

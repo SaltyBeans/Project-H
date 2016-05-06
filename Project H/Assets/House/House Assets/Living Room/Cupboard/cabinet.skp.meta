@@ -1,0 +1,244 @@
+fileFormatVersion: 2
+guid: 48970e9868a471c4390c938242ecf3b3
+timeCreated: 1449931312
+licenseType: Free
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f00000040000000410000004200000043000000
+  assetHash:
+    serializedVersion: 2
+    Hash: b6a3544c286b170030876c7ddf1bc826
+  longitude: 13.417
+  latitude: 52.533
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 0.04833106, y: 1.4499979, z: -1.4670839}
+      lookAt: {x: 0.6626748, y: 0.82242674, z: 0.20451045}
+      up: {x: 0.114649564, y: 0.9431541, z: 0.31195498}
+      fov: 63.556347
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Komponente#10
+    100004: Komponente#10 1
+    100006: Komponente#11
+    100008: Komponente#11 1
+    100010: Komponente#13
+    100012: Komponente#15
+    100014: Komponente#16
+    100016: Komponente#16 1
+    100018: Komponente#17
+    100020: Komponente#18
+    100022: Komponente#18 1
+    100024: Komponente#19
+    100026: Komponente#2
+    100028: Komponente#20
+    100030: Komponente#21
+    100032: Komponente#22
+    100034: Komponente#22 1
+    100036: Komponente#23
+    100038: Komponente#3
+    100040: Komponente#3 1
+    100042: Komponente#4
+    100044: Komponente#4 1
+    100046: Komponente#5
+    100048: Komponente#6
+    100050: Komponente#6 1
+    100052: Komponente#7
+    100054: Komponente#7 1
+    100056: Komponente#7 2
+    100058: Komponente#7 3
+    100060: Komponente#7 4
+    100062: Komponente#7 5
+    100064: Komponente#7 6
+    100066: Komponente#7 7
+    100068: Komponente#8
+    100070: Komponente#8 1
+    100072: Komponente#9
+    100074: Komponente#9 1
+    400000: //RootNode
+    400002: Komponente#10
+    400004: Komponente#10 1
+    400006: Komponente#11
+    400008: Komponente#11 1
+    400010: Komponente#13
+    400012: Komponente#15
+    400014: Komponente#16
+    400016: Komponente#16 1
+    400018: Komponente#17
+    400020: Komponente#18
+    400022: Komponente#18 1
+    400024: Komponente#19
+    400026: Komponente#2
+    400028: Komponente#20
+    400030: Komponente#21
+    400032: Komponente#22
+    400034: Komponente#22 1
+    400036: Komponente#23
+    400038: Komponente#3
+    400040: Komponente#3 1
+    400042: Komponente#4
+    400044: Komponente#4 1
+    400046: Komponente#5
+    400048: Komponente#6
+    400050: Komponente#6 1
+    400052: Komponente#7
+    400054: Komponente#7 1
+    400056: Komponente#7 2
+    400058: Komponente#7 3
+    400060: Komponente#7 4
+    400062: Komponente#7 5
+    400064: Komponente#7 6
+    400066: Komponente#7 7
+    400068: Komponente#8
+    400070: Komponente#8 1
+    400072: Komponente#9
+    400074: Komponente#9 1
+    2300000: //RootNode
+    2300002: Komponente#11
+    2300004: Komponente#11 1
+    2300006: Komponente#13
+    2300008: Komponente#15
+    2300010: Komponente#16
+    2300012: Komponente#16 1
+    2300014: Komponente#17
+    2300016: Komponente#18
+    2300018: Komponente#18 1
+    2300020: Komponente#2
+    2300022: Komponente#21
+    2300024: Komponente#22
+    2300026: Komponente#22 1
+    2300028: Komponente#23
+    2300030: Komponente#3
+    2300032: Komponente#3 1
+    2300034: Komponente#5
+    2300036: Komponente#6
+    2300038: Komponente#6 1
+    2300040: Komponente#7
+    2300042: Komponente#7 1
+    2300044: Komponente#7 2
+    2300046: Komponente#7 3
+    2300048: Komponente#7 4
+    2300050: Komponente#7 5
+    2300052: Komponente#7 6
+    2300054: Komponente#7 7
+    2300056: Komponente#9
+    2300058: Komponente#9 1
+    3300000: //RootNode
+    3300002: Komponente#11
+    3300004: Komponente#11 1
+    3300006: Komponente#13
+    3300008: Komponente#15
+    3300010: Komponente#16
+    3300012: Komponente#16 1
+    3300014: Komponente#17
+    3300016: Komponente#18
+    3300018: Komponente#18 1
+    3300020: Komponente#2
+    3300022: Komponente#21
+    3300024: Komponente#22
+    3300026: Komponente#22 1
+    3300028: Komponente#23
+    3300030: Komponente#3
+    3300032: Komponente#3 1
+    3300034: Komponente#5
+    3300036: Komponente#6
+    3300038: Komponente#6 1
+    3300040: Komponente#7
+    3300042: Komponente#7 1
+    3300044: Komponente#7 2
+    3300046: Komponente#7 3
+    3300048: Komponente#7 4
+    3300050: Komponente#7 5
+    3300052: Komponente#7 6
+    3300054: Komponente#7 7
+    3300056: Komponente#9
+    3300058: Komponente#9 1
+    4300000: Mesh cabinet
+    4300002: Mesh Komponente#2
+    4300004: Mesh Komponente#3
+    4300006: Mesh Komponente#7
+    4300008: Mesh Komponente#11
+    4300010: Mesh Komponente#9
+    4300012: Mesh Komponente#6
+    4300014: Mesh Komponente#5
+    4300016: Mesh Komponente#13
+    4300018: Mesh Komponente#15
+    4300020: Mesh Komponente#16
+    4300022: Mesh Komponente#22
+    4300024: Mesh Komponente#16
+    4300026: Mesh Komponente#18
+    4300028: Mesh Komponente#17
+    4300030: Mesh Komponente#21
+    4300032: Mesh Komponente#23
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
