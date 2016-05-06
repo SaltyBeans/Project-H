@@ -31,8 +31,8 @@ public class WaveBehaviour : MonoBehaviour
 
     void Awake()
     {
-        setComponents(false); //Disable the character so it won't move.
-        GameObject.Destroy(GameObject.Find("BackgroundMusic"));//Kill the title music.
+        setComponents(false);                                                         //Disable the character so it won't move.
+        GameObject.Destroy(GameObject.Find("BackgroundMusic")); //Kill the title music.
         playerStartingTransform = GameObject.Find("SpawnPositions/PlayerSpawnPosition").GetComponent<Transform>();
         officialStartingTransform = GameObject.Find("SpawnPositions/OfficialSpawnPosition").GetComponent<Transform>();
         moneySpawnTransform = GameObject.Find("SpawnPositions/MoneySpawnPosition").GetComponent<Transform>();
@@ -45,12 +45,12 @@ public class WaveBehaviour : MonoBehaviour
     {
         if (official.activeSelf && !textUp) //Official is enabled && level end texts are not up
         {
-            EndTheWave();
+            EndTheWave(); // Game will not end until a stack is found OR inspection is complete.
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K)) //DEBUG
         {
-            spawnMoney(5427951, moneySpawnTransform.position);
+            spawnMoney(515544, moneySpawnTransform.position);
         }
 
 
@@ -60,8 +60,7 @@ public class WaveBehaviour : MonoBehaviour
                 currentText.color = new Color(currentText.color.r, currentText.color.g, currentText.color.b, 1f); //Make the current text's alpha 1.
 
 
-            if (currentText.color.a >= 0.992f)
-            //If texts are showing and the current text is almost full alpha.
+            if (currentText.color.a >= 0.992f)   //If the current text is almost full alpha.
             {
 
                 if (currentText == Text1)
@@ -195,7 +194,6 @@ public class WaveBehaviour : MonoBehaviour
         //TODO: Calculate the appropriate money for the next wave.
     }
 
-
     IEnumerator FadeTo(Text _text, float aValue, float aTime)
     {
         float alpha = _text.color.a;
@@ -219,6 +217,11 @@ public class WaveBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject moneyPrefab;
 
+    /// <summary>
+    /// Spawn specific money at a spawn position.
+    /// </summary>
+    /// <param name="amount">Money amount to be spawned.</param>
+    /// <param name="spawnCenter">Location of the spawn, bottom left corner.</param>
     void spawnMoney(int amount, Vector3 spawnCenter)
     {
         int numberOfFullStacks = 0;

@@ -2,7 +2,7 @@
 
 public class MoneyScript10K : MonoBehaviour
 {
-    private int moneyAmount { get; set; }
+    private int moneyAmount;
     //Right now, the amount is set at 10.000$.
 
 

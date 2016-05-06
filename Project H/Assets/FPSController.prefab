@@ -53,7 +53,7 @@ GameObject:
   - 114: {fileID: 11408860}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,7 +380,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cb8e652922186e4ba503eb6dbf45d64, type: 2}
+  - {fileID: 2100000, guid: 915d008807ad85348b62744aeb529128, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -406,7 +406,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cb8e652922186e4ba503eb6dbf45d64, type: 2}
+  - {fileID: 2100000, guid: 915d008807ad85348b62744aeb529128, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -432,7 +432,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cb8e652922186e4ba503eb6dbf45d64, type: 2}
+  - {fileID: 2100000, guid: 915d008807ad85348b62744aeb529128, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -458,7 +458,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cb8e652922186e4ba503eb6dbf45d64, type: 2}
+  - {fileID: 2100000, guid: 915d008807ad85348b62744aeb529128, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -510,7 +510,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cb8e652922186e4ba503eb6dbf45d64, type: 2}
+  - {fileID: 2100000, guid: 915d008807ad85348b62744aeb529128, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -536,7 +536,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0cb8e652922186e4ba503eb6dbf45d64, type: 2}
+  - {fileID: 2100000, guid: 915d008807ad85348b62744aeb529128, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -984,12 +984,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdNumber: 5
   fingers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  palm: {fileID: 0}
+  - {fileID: 105852}
+  - {fileID: 132930}
+  - {fileID: 180384}
+  - {fileID: 148036}
+  - {fileID: 103830}
+  palm: {fileID: 143898}
 --- !u!114 &11479060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab8853ff21cb284a80616eda33d1980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 2800000, guid: a83c30df833d8404f82e4f83de4b5630, type: 3}
+  crosshair: {fileID: 2800000, guid: fe7d4451d20d85e4f90b1c46b609f7a0, type: 3}
   pos:
     serializedVersion: 2
     x: 0
