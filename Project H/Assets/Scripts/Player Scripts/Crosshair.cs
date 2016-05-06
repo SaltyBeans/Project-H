@@ -81,6 +81,10 @@ public class Crosshair : MonoBehaviour
                 infoText.text = null;
             }
         }
+        else
+        {
+            infoText.text = null;
+        }
     }
 
     /// <summary>
