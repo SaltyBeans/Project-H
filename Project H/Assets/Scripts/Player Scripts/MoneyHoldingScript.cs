@@ -29,7 +29,7 @@ public class MoneyHoldingScript : MonoBehaviour
 
         else if (crosshair.GetHit().collider != null && crosshair.GetHit().collider.tag == "Money")
         {
-            if (crosshair.GetHit().collider.GetComponent<MoneyScript10K>() != null) // Money has collider script attached.
+            if (crosshair.GetHit().collider.GetComponent<MoneyScript10K>() != null)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
