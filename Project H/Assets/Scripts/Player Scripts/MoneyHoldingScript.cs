@@ -41,7 +41,7 @@ public class MoneyHoldingScript : MonoBehaviour
 
     public void HoldMoney(GameObject money)
     {
-        if (moneyStack.Count < holdNumber && !moneyStack.Contains(money)) //If there is room on the hand && if already picked that money up
+        if (moneyStack.Count < holdNumber && !moneyStack.Contains(money)) //If there is room on the hand AND if already picked that money up
         {
             moneyStack.Push(money);
             money.transform.rotation = palm.transform.rotation;
