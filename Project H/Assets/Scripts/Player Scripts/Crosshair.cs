@@ -73,7 +73,12 @@ public class Crosshair : MonoBehaviour
 
             else if (hit.collider.tag == "Telephone") //Show phone info. TODO: check if the timer has ended, if not, then show the info.
             {
-                infoText.text = "Click to end the timer.";
+                if (GameObject.Find("LevelManager").GetComponent<HideWaveScript>().hideTime > 0)
+                    infoText.text = "Click to end the timer.";
+
+                else
+                    infoText.text = null;
+
             }
 
             else

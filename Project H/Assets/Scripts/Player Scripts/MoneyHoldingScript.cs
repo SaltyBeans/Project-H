@@ -29,7 +29,7 @@ public class MoneyHoldingScript : MonoBehaviour
 
         else if (crosshair.GetHit().collider != null && crosshair.GetHit().collider.tag == "Money")
         {
-            if (crosshair.GetHit().collider.GetComponent<MoneyScript10K>() == null) // Money has collider script attached.
+            if (crosshair.GetHit().collider.GetComponent<MoneyScript10K>() != null) // Money has collider script attached.
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -63,7 +63,7 @@ public class MoneyHoldingScript : MonoBehaviour
             nextMoney.GetComponent<Collider>().enabled = true;
             nextMoney.GetComponent<Rigidbody>().isKinematic = false;
             nextMoney.transform.parent = null;
-
+            nextMoney.GetComponent<Rigidbody>().AddForce(GetComponentInParent<Camera>().transform.forward * 50f);
             //TODO: animate finger releasing            
         }
 

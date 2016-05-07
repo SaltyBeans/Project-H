@@ -31,7 +31,7 @@ public class WaveBehaviour : MonoBehaviour
 
     void Awake()
     {
-        setComponents(false);                                                         //Disable the character so it won't move.
+        setComponents(false);                                                         //Disable the character components so he won't move.
         GameObject.Destroy(GameObject.Find("BackgroundMusic")); //Kill the title music.
         playerStartingTransform = GameObject.Find("SpawnPositions/PlayerSpawnPosition").GetComponent<Transform>();
         officialStartingTransform = GameObject.Find("SpawnPositions/OfficialSpawnPosition").GetComponent<Transform>();

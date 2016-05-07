@@ -203,7 +203,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 14455370}
   - 114: {fileID: 14455369}
-  m_Layer: 0
+  - 65: {fileID: 14455371}
+  m_Layer: 2
   m_Name: player_hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,6 +249,18 @@ Transform:
   - {fileID: 2108624087}
   m_Father: {fileID: 135463606}
   m_RootOrder: 0
+--- !u!65 &14455371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14455368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.22, y: 18.57, z: 1}
+  m_Center: {x: -0.44, y: -4.6, z: 0}
 --- !u!1 &14572588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,7 +2681,7 @@ GameObject:
   - 4: {fileID: 224354033}
   - 33: {fileID: 224354035}
   - 23: {fileID: 224354034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: finger_pinky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7892,7 +7905,7 @@ GameObject:
   - 4: {fileID: 623103034}
   - 33: {fileID: 623103036}
   - 23: {fileID: 623103035}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: finger_thumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13269,7 +13282,7 @@ GameObject:
   - 4: {fileID: 1114244123}
   - 33: {fileID: 1114244125}
   - 23: {fileID: 1114244124}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: finger_middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16296,7 +16309,7 @@ GameObject:
   - 4: {fileID: 1392287817}
   - 33: {fileID: 1392287819}
   - 23: {fileID: 1392287818}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: finger_index
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19357,7 +19370,7 @@ GameObject:
   - 4: {fileID: 1612232774}
   - 33: {fileID: 1612232776}
   - 23: {fileID: 1612232775}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: finger_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24263,7 +24276,7 @@ GameObject:
   - 33: {fileID: 2108624086}
   - 23: {fileID: 2108624085}
   - 54: {fileID: 2108624084}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
