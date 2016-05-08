@@ -4,21 +4,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float t;
-
     [SerializeField]
     private float speed = 5f;
-
     [SerializeField]
     private float lookSensitivity = 3f;
-
     private PlayerMotor motor;
-
-    private Rigidbody body;
-
+    private Vector3 _velocity;
+    public bool isRunning { get { return running; } private set { } }
+    private bool running;
     void Start()
     {
         motor = GetComponent<PlayerMotor>();
-        body = GetComponent<Rigidbody>();
+        _velocity = Vector3.zero;
     }
 
     void Update()
@@ -31,7 +28,7 @@ public class PlayerController : MonoBehaviour
         Vector3 _movVertical = transform.forward * _zMov;
 
         // Final movement vector
-        Vector3 _velocity = (_movHorizontal + _movVertical).normalized;
+        _velocity = (_movHorizontal + _movVertical);
 
         //Calculate rotation as a 3D vector (turning around)
         float _yRot = Input.GetAxisRaw("Mouse X");
@@ -49,15 +46,27 @@ public class PlayerController : MonoBehaviour
 
         speed = 5f;
 
+        running = false;
         if (Input.GetKey(KeyCode.LeftShift)) //Sprint
         {
             speed = 10f;
+            running = true;
         }
 
         //Apply rotation
         motor.Rotate(_rotation);
 
         //Apply movement
-        motor.Move(_velocity, speed);
+        motor.Move(_velocity.normalized, speed);
+    }
+
+    public bool IsGrounded()
+    {
+        return (Physics.Raycast(transform.position, -Vector3.up, GetComponent<Collider>().bounds.extents.y + 0.1f));
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return _velocity;
     }
 }
