@@ -35,10 +35,8 @@ public class AIControl : MonoBehaviour
     private float lookForSeconds;
     float time;
 
-
     public bool inspectionComplete;
 
-    // Use this for initialization
     void Start()
     {
         // get the components on the object we need ( should not be null due to require component so no need to check )
@@ -54,6 +52,7 @@ public class AIControl : MonoBehaviour
         agent.speed = 0.5f;
 
     }
+
     void FixedUpdate()
     {
         if (Physics.Raycast(ethanhead.transform.position, ethanhead.transform.up, out hit, 1.5f))
@@ -69,7 +68,6 @@ public class AIControl : MonoBehaviour
 
     }
 
-
     private void Update()
     {
         if (lookingState == false)      //If player not looking, walking
@@ -80,7 +78,7 @@ public class AIControl : MonoBehaviour
                 {
                     agent.SetDestination(target[targetCounter].position);
 
-                    if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 0.5 && targetCounter < target.Length)  //If Official is closer than 1.5 to the target and next target is not OutOfBounds
+                    if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 0.5f && targetCounter < target.Length)  //If Official is closer than 1.5 to the target and next target is not OutOfBounds
                     {
                         lookingState = true;              // Not walking, looking
                         lookedAtObjects = false;     //Didn't look at every object in the current -new- room
