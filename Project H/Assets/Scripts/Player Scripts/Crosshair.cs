@@ -9,8 +9,6 @@ public class Crosshair : MonoBehaviour
     public TextMesh infoText;
     RaycastHit hit;
     public Camera cam;
-    public MoneyHoldingScript HoldScript;
-
     [SerializeField]
     private GameObject official;
 

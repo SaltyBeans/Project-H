@@ -25,6 +25,7 @@ public class AIControl : MonoBehaviour
     public Transform[] stoppoint8;
     public Transform[] stoppoint9;
 
+    private OfficialStateMachine stateMachine;
 
     int lookCounter;
     RaycastHit hit;
@@ -42,6 +43,7 @@ public class AIControl : MonoBehaviour
         // get the components on the object we need ( should not be null due to require component so no need to check )
         agent = GetComponentInChildren<NavMeshAgent>();
         character = GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>();
+        stateMachine = GetComponent<OfficialStateMachine>();
 
         targetCounter = 0;
         lookCounter = 0;
@@ -51,103 +53,108 @@ public class AIControl : MonoBehaviour
         agent.updatePosition = true;
         agent.speed = 0.5f;
 
+        stateMachine.ChangeCurrentState(new GoToDoor());
     }
 
     void FixedUpdate()
     {
-        if (Physics.Raycast(ethanhead.transform.position, ethanhead.transform.up, out hit, 1.5f))
-        {
-            if (hit.collider.tag == "door")
-            {
-                if (hit.collider.GetComponent<DoorScript>().getState() == false)
-                {
-                    hit.collider.GetComponent<DoorScript>().OpenDoor();
-                }
-            }
-        }
+        //if (Physics.Raycast(ethanhead.transform.position, ethanhead.transform.up, out hit, 1.5f))
+        //{
+        //    if (hit.collider.tag == "door")
+        //    {
+        //        if (hit.collider.GetComponent<DoorScript>().getState() == false)
+        //        {
+        //            hit.collider.GetComponent<DoorScript>().OpenDoor();
+        //        }
+        //    }
+        //}
 
     }
 
-    private void Update()
+    void Update()
     {
-        if (lookingState == false)      //If player not looking, walking
-        {
-            if (target != null)
-            {
-                if (targetCounter != target.Length)
-                {
-                    agent.SetDestination(target[targetCounter].position);
+        stateMachine.ExecuteSM();
+        //if (lookingState == false)      //If player not looking, walking
+        //{
+        //    if (target != null)
+        //    {
+        //        if (targetCounter != target.Length)
+        //        {
+        //            agent.SetDestination(target[targetCounter].position);
 
-                    if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 0.5f && targetCounter < target.Length)  //If Official is closer than 1.5 to the target and next target is not OutOfBounds
-                    {
-                        lookingState = true;              // Not walking, looking
-                        lookedAtObjects = false;     //Didn't look at every object in the current -new- room
-                        time = Time.time;
-                        lookCounter = 0;
-                        agent.Stop();
-                        agent.updateRotation = false;
-                    }
+        //            if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 0.5f && targetCounter < target.Length)  
+        //If Official is closer than 1.5 to the target and next target is not OutOfBounds
+        //            {
+        //                lookingState = true;              // Not walking, looking
+        //                lookedAtObjects = false;     //Didn't look at every object in the current -new- room
+        //                time = Time.time;
+        //                lookCounter = 0;
+        //                agent.Stop();
+        //                agent.updateRotation = false;
+        //            }
 
-                    else // If not close to the target
-                    {
-                        // use the values to move the character
-                        character.Move(agent.desiredVelocity, false, false);
-                    }
-                }
+        //            else // If not close to the target
+        //            {
+        //                // use the values to move the character
+        //                character.Move(agent.desiredVelocity, false, false);
+        //            }
+        //        }
 
-                else if (targetCounter == target.Length) //Looked at all the rooms.
-                    inspectionComplete = true;
-            }
+        //        else if (targetCounter == target.Length) //Looked at all the rooms.
+        //            inspectionComplete = true;
+        //    }
 
-        }
+        //}
 
-        else //If player not walking, looking
-        {
-            character.Move(Vector3.zero, false, false);
+        //else //If player not walking, looking
+        //{
+        //    character.Move(Vector3.zero, false, false);
 
-            if (lookedAtObjects == false)
-            {
+        //    if (lookedAtObjects == false)
+        //    {
 
-                if (lookCounter < getRoom().Length && Time.time - time > lookForSeconds) // LookCounter is lower than length and current time - last looked time is bigger than lookForSeconds
-                {
-                    lookCounter++;              //Get the next object to look at, at the next frame.
-                    time = Time.time;
-                }
+        //        if (lookCounter < getRoom().Length && Time.time - time > lookForSeconds) // LookCounter is lower than length and current time - last looked time is bigger than lookForSeconds
+        //        {
+        //            lookCounter++;              //Get the next object to look at, at the next frame.
+        //            time = Time.time;
+        //        }
 
-                if (lookCounter == getRoom().Length)    //Looked at all the objects. Reset the parameters.
-                {
-                    lookedAtObjects = true;   //Looked at every object in the room
-                    lookingState = false;       //Change the looking state to walking.
+        //        if (lookCounter == getRoom().Length)    //Looked at all the objects. Reset the parameters.
+        //        {
+        //            lookedAtObjects = true;   //Looked at every object in the room
+        //            lookingState = false;       //Change the looking state to walking.
 
-                    if (targetCounter < target.Length)//If this is not the last room...
-                    {
-                        targetCounter++;                    //Change the walking target.
-                    }
+        //            if (targetCounter < target.Length)//If this is not the last room...
+        //            {
+        //                targetCounter++;                    //Change the walking target.
+        //            }
 
-                    lookCounter = 0;            //Reset the looking counter.
-                    agent.Resume();            //Resume the navigation.
-                }
-            }
-        }
+        //            lookCounter = 0;            //Reset the looking counter.
+        //            agent.Resume();            //Resume the navigation.
+        //        }
+        //    }
+        //}
     }
 
     void LateUpdate()
     {
-        if (lookedAtObjects == false && lookingState == true)
-        {
-            Quaternion firstRot = ethanbody.transform.rotation;
-            ethanbody.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
-            firstRot.y = ethanbody.transform.localRotation.y;
-            ethanbody.transform.localRotation = firstRot;
+        //if (lookedAtObjects == false && lookingState == true)
+        //{
+        //    Quaternion firstRot = ethanbody.transform.rotation;
+        //    ethanbody.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
+        //    firstRot.y = ethanbody.transform.localRotation.y;
+        //    ethanbody.transform.localRotation = firstRot;
 
-            ethanhead.transform.LookAt(getRoom()[lookCounter].GetComponent<Transform>().position); //Look at those objects.
-            ethanhead.transform.Rotate(90, 0, 0);
-            ethanhead.transform.Rotate(0, -90, 0);
+        //    OfficialLookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
 
-            Debug.Log("looking at: " + getRoom()[lookCounter].GetComponent<Transform>().name);
-        }
+        //    Debug.Log("looking at: " + getRoom()[lookCounter].GetComponent<Transform>().name);
+        //}
     }
 
+    public OfficialStateMachine getFSM()
+    {
+        return stateMachine;
+    }
 
     Transform[] getRoom()
     {
@@ -174,6 +181,17 @@ public class AIControl : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    /// <summary>
+    /// Official locks on and looks at the target.
+    /// </summary>
+    /// <param name="_lookAtTarget">Target to look at.</param>
+    public void OfficialLookAt(Vector3 _lookAtTarget)
+    {
+        ethanhead.transform.LookAt(_lookAtTarget); //Look at those objects.
+        ethanhead.transform.Rotate(90, 0, 0);
+        ethanhead.transform.Rotate(0, -90, 0);
     }
 
     public void SetTarget(Transform target)
