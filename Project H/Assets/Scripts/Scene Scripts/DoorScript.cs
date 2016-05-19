@@ -2,7 +2,10 @@
 
 public class DoorScript : MonoBehaviour
 {
-    private bool DoorState = false; //TODO: too ambiguous.
+    /// <summary>
+    /// It's true if it's open.
+    /// </summary>
+    private bool DoorState = false;
     private Crosshair crosshair;
     void Start()
     {
