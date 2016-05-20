@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class HideWaveScript : MonoBehaviour
 {
-
-    [SerializeField]
     public float hideTime = 30f;
 
     private float minute;
@@ -16,17 +14,14 @@ public class HideWaveScript : MonoBehaviour
 
     private bool officialSpawned = false;
 
+    [SerializeField]
+    private GameObject Official;
 
-    public GameObject Official;
-
-    void Start()
-    {
-        Official.SetActive(false);
-    }
     void Update()
     {
         if (hideTime > 0)
         {
+            officialSpawned = false;
             hideTime -= 1.0f * Time.deltaTime;
             minute = Mathf.Floor(hideTime / 60f);
             second = (hideTime % 60f);

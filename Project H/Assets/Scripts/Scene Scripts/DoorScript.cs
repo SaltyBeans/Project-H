@@ -66,6 +66,11 @@ public class DoorScript : MonoBehaviour
             DoorState = false;
         }
     }
+
+    /// <summary>
+    /// Returns true if the door is open.
+    /// </summary>
+    /// <returns>Door's state, open or closed.</returns>
     public bool getState()
     {
         return DoorState;
