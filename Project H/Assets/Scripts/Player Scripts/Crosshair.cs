@@ -78,7 +78,10 @@ public class Crosshair : MonoBehaviour
                     infoText.text = null;
 
             }
-
+            else if (hit.collider.tag == "sHammer")
+            {
+                infoText.text = "Click [LMB] to Pick Up";
+            }
             else
             {
                 infoText.text = null;

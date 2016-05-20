@@ -17,6 +17,7 @@ TagManager:
   - detectionObj
   - Official
   - Telephone
+  - sHammer
   layers:
   - Default
   - TransparentFX
