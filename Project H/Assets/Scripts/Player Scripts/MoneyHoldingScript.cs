@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 public class MoneyHoldingScript : MonoBehaviour
 {
@@ -12,8 +12,10 @@ public class MoneyHoldingScript : MonoBehaviour
     public GameObject palm;
     private Stack<GameObject> moneyStack;
     private Crosshair crosshair;
+    private Transform camTransform;
     void Start()
     {
+        camTransform = GetComponentInParent<Camera>().transform;
         moneyStack = new Stack<GameObject>();
         crosshair = GetComponentInParent<Crosshair>();
         AnimateHand(handState.OPEN);
@@ -67,7 +69,7 @@ public class MoneyHoldingScript : MonoBehaviour
             nextMoney.GetComponent<Collider>().enabled = true;
             nextMoney.GetComponent<Rigidbody>().isKinematic = false;
             nextMoney.transform.parent = null;
-            nextMoney.GetComponent<Rigidbody>().AddForce(GetComponentInParent<Camera>().transform.forward * 50f);
+            nextMoney.GetComponent<Rigidbody>().AddForce(camTransform.forward * 50f + (-camTransform.right * 15f));
             if (moneyStack.Count == 0)
             {
                 AnimateHand(handState.OPEN);
@@ -75,20 +77,20 @@ public class MoneyHoldingScript : MonoBehaviour
             else
             {
                 StartCoroutine("openCloseHand");
-            }     
+            }
         }
-       
+
 
     }
     public void AnimateHand(handState hs)
     {
         if (hs == handState.CLOSE)
         {
-            foreach(GameObject obj in openFingers)
+            foreach (GameObject obj in openFingers)
             {
                 obj.SetActive(false);
             }
-            foreach(GameObject obj in closedFingers)
+            foreach (GameObject obj in closedFingers)
             {
                 obj.SetActive(true);
             }

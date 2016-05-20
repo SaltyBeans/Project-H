@@ -8,7 +8,7 @@ public class OfficialAttention : MonoBehaviour
     public Slider attentionSlider;
     void Start()
     {
-        officialAttention = 0f;
+        officialAttention = 51f;
 
         attentionText.text = "Attention";
 
