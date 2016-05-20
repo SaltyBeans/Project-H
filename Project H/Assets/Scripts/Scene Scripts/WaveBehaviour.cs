@@ -9,6 +9,7 @@ public class WaveBehaviour : MonoBehaviour
     private Transform officialStartingTransform;
     private Transform moneySpawnTransform;
 
+    private HideWaveScript hideScript;
     [SerializeField]
     private GameObject official;
     [SerializeField]
@@ -28,14 +29,16 @@ public class WaveBehaviour : MonoBehaviour
     bool levelFinished = false;
 
     public uint successfulWaves { get; private set; }
-
     void Awake()
     {
         setComponents(false);                                                         //Disable the character components so he won't move.
+        hideScript = GameObject.Find("LevelManager").GetComponent<HideWaveScript>();
         GameObject.Destroy(GameObject.Find("BackgroundMusic")); //Kill the title music.
         playerStartingTransform = GameObject.Find("SpawnPositions/PlayerSpawnPosition").GetComponent<Transform>();
         officialStartingTransform = GameObject.Find("SpawnPositions/OfficialSpawnPosition").GetComponent<Transform>();
         moneySpawnTransform = GameObject.Find("SpawnPositions/MoneySpawnPosition").GetComponent<Transform>();
+
+        official.SetActive(false);
 
         StartTheWave();
     }
@@ -86,6 +89,7 @@ public class WaveBehaviour : MonoBehaviour
 
                         if (successfulPlayer) //If player is successful
                         {
+                            successfulWaves++;
                             StartTheWave();
                         }
 
@@ -125,6 +129,9 @@ public class WaveBehaviour : MonoBehaviour
         setComponents(false);
         StartCoroutine(FadeTo(Text1, 1.0f, 2.0f));
         EndWaveTexture.SetActive(true);
+
+        hideScript.hideTime = (((int)successfulWaves + 1f) * 5f) + 5f;              //+5 is for the text screen.
+        spawnMoney(((int)successfulWaves + 1) * 10000 * 5, moneySpawnTransform.position); //Spawn the money
     }
 
     void EndTheWave()
@@ -179,19 +186,21 @@ public class WaveBehaviour : MonoBehaviour
     /// </summary>
     void ResetTheWave()
     {
-        GameObject official = GameObject.FindGameObjectWithTag("Official");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        official.SetActive(true);
+        Debug.Log("official state " + official.activeSelf);
 
         player.transform.position = playerStartingTransform.position; //Reset the position of the player.
         player.transform.rotation = playerStartingTransform.rotation; //Reset the rotation of the player.
 
         official.transform.position = officialStartingTransform.position; //Reset the position of the official.
         official.transform.rotation = officialStartingTransform.rotation; //Reset the rotation of the official.
-        official.SetActive(false); //Disable the official.
+        official.GetComponent<AIControl>().inspectionComplete = false;
+        official.GetComponent<OfficialStateMachine>().ChangeCurrentState(new GoToDoor());
+        levelFinished = false;
 
-        //TODO: Reset the hide timer.
-        //TODO: Calculate the appropriate timer for the timer.
-        //TODO: Calculate the appropriate money for the next wave.
+        official.SetActive(false); //Disable the official.
+        Debug.Log("official state " + official.activeSelf);
     }
 
     IEnumerator FadeTo(Text _text, float aValue, float aTime)
