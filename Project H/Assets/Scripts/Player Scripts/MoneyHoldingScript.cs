@@ -28,9 +28,8 @@ public class MoneyHoldingScript : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
-        {
             DropMoney();
-        }
+
 
         else if (crosshair.GetHit().collider != null && crosshair.GetHit().collider.tag == "Money")
         {
