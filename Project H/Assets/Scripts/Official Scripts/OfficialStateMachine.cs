@@ -22,13 +22,12 @@ public class GoToDoor : IState
     {
         _official.agent.SetDestination(doorStopPoint.transform.position);
         _official.character.Move(_official.agent.desiredVelocity, false, false);
-        Debug.Log("state is go to door");
+
         if (Vector3.Distance(_official.transform.position, doorStopPoint.transform.position) < 0.5f)
         {
-            Debug.Log("changing to lookatdoor");
             _official.agent.Stop();
-            _official.character.Move(Vector3.zero, false, false);
             _official.agent.updateRotation = false;
+            _official.character.Move(Vector3.zero, false, false);
             _official.agent.SetDestination(_official.transform.position);
             _official.getFSM().ChangeCurrentState(new LookAtDoor());
         }
@@ -49,6 +48,8 @@ public class LookAtDoor : IState
     AudioSource audSouce;
     OfficialAttention offAttention;
     uint numOfKnocks = 0;
+    GameObject[] doors = GameObject.FindGameObjectsWithTag("door");
+    DoorScript doorScript;
     public void Enter(AIControl _official)
     {
         _official.character.Move(Vector3.zero, false, false);
@@ -56,6 +57,11 @@ public class LookAtDoor : IState
         audSouce = _official.GetComponentInChildren<AudioSource>();
         offAttention = _official.GetComponent<OfficialAttention>();
         audSouce.clip = Resources.Load("knocking_sound") as AudioClip;
+
+        foreach (var item in doors) //Get the door script of the outside door.
+            if (item.name == "outsidedoor")
+                doorScript = item.GetComponent<DoorScript>();
+
     }
 
     public void Execute(AIControl _official)
@@ -63,12 +69,13 @@ public class LookAtDoor : IState
         _official.OfficialLookAt(doorLookAt.position);
         _official.character.Move(Vector3.zero, false, false);
 
-        //TODO: check if the player has opened the door.
-
         if (Time.time - time > 4.5f) //Wait 4.5 seconds
         {
             if (offAttention.getAttentionValue() > 50f) //If the attention is high enough, knock.
             {
+                if (doorScript.getState()) //If the door is open
+                    _official.getFSM().ChangeCurrentState(new Search());
+
                 if (numOfKnocks > 2) //After two knocks, increment the attention.
                     offAttention.IncrementAttention(5f);
 
