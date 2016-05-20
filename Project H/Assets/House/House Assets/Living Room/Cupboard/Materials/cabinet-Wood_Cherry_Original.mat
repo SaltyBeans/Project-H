@@ -26,8 +26,8 @@ Material:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 2d758b88355d90f4890a0ff5f9ac5226, type: 3}
+          m_Scale: {x: 3, y: 3}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -93,10 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _RimPower
-        second: 3
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -131,6 +127,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _RimPower
+        second: 3
     m_Colors:
       data:
         first:
