@@ -52,7 +52,7 @@ public class AIControl : MonoBehaviour
         agent.updateRotation = true;
         agent.updatePosition = true;
         agent.speed = 0.5f;
-
+        stateMachine.ChangeGlobalState(new GlobalOfficialState());
         stateMachine.ChangeCurrentState(new GoToDoor());
     }
 

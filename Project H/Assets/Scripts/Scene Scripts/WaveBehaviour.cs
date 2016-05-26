@@ -48,7 +48,8 @@ public class WaveBehaviour : MonoBehaviour
     {
         if (official.activeSelf && !textUp) //Official is enabled && level end texts are not up
         {
-            EndTheWave(); // Game will not end until a stack is found OR inspection is complete.
+            //TODO: Fix this logic.
+            EndTheWave(); // Game will not end until a stack is found OR inspection is complete. Those checks are inside EndTheWave()  
         }
 
         if (Input.GetKeyDown(KeyCode.K)) //DEBUG
@@ -136,7 +137,7 @@ public class WaveBehaviour : MonoBehaviour
 
     void EndTheWave()
     {
-        if (official.GetComponentInChildren<NPCDetection>().moneyFound) //Money found in the House.
+        if (official.GetComponentInChildren<NPCDetection>().moneyFound && official.GetComponentInChildren<NPCDetection>().endWave) //Money found in the House.
         {
             Text1.text = "Marked bills have been found in your house.";
             Text2.text = "It's over.\nYou have been declared a traitor. \nAll of your connections to the agency have been terminated.";
@@ -187,6 +188,7 @@ public class WaveBehaviour : MonoBehaviour
     void ResetTheWave()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Camera.main.enabled = true;
         official.SetActive(true);
         Debug.Log("official state " + official.activeSelf);
 
@@ -214,7 +216,7 @@ public class WaveBehaviour : MonoBehaviour
         }
     }
 
-    private void setComponents(bool _state)
+    public void setComponents(bool _state)
     {
         foreach (Behaviour item in disableComponents)
             item.enabled = _state;

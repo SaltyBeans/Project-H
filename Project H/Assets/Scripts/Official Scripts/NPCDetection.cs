@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class NPCDetection : MonoBehaviour
 {
@@ -14,9 +14,13 @@ public class NPCDetection : MonoBehaviour
 
     public bool moneyFound;
 
+    public bool endWave;
+
     ArrayList foundMoney = new ArrayList();
 
     Vector3 resetRay = Vector3.zero;
+
+    public GameObject moneyLook;
 
     void Awake()
     {
@@ -28,17 +32,14 @@ public class NPCDetection : MonoBehaviour
 
     void Update()
     {
-
         foreach (GameObject money in foundMoney)
         {
-
             Vector3 relativeMoneyPos = money.transform.position - transform.position;
-
             if (Physics.Raycast(transform.position, relativeMoneyPos, out hit))
             {
-
-                if (hit.collider.tag == "Money")
+                if (hit.collider.tag == "Money") //At least one of the money in visual detection volume is visible.
                 {
+                    moneyLook = money; //Set moneyLook to official to look at.
                     moneyFound = true;
                     Vector3[] pos = new Vector3[] { gameObject.transform.position, hit.collider.gameObject.transform.position };
 
@@ -46,9 +47,8 @@ public class NPCDetection : MonoBehaviour
                     break;
                 }
                 if (hit.collider.tag != "Money")
-                {
                     moneyFound = false;
-                }
+
             }
         }
 

@@ -13,10 +13,7 @@ public class GoToDoor : IState
     HideWaveScript waveTimer = GameObject.Find("LevelManager").GetComponent<HideWaveScript>();
     bool targetSet = false;
     public void Enter(AIControl _official)
-    {
-
-
-    }
+    { }
 
     public void Execute(AIControl _official)
     {
@@ -42,7 +39,6 @@ public class GoToDoor : IState
 
 public class LookAtDoor : IState
 {
-
     float time = Time.time;
     Transform doorLookAt = GameObject.Find("DoorLookAt").GetComponent<Transform>();
     AudioSource audSouce;
@@ -115,6 +111,42 @@ public class Search : IState //TODO: implement Search state
     }
 }
 
+public class MoneyFound : IState
+{
+    GameObject cameraObj = new GameObject("Found Money Camera", typeof(Camera));
+    Camera playerCamera = Camera.main;
+    public void Enter(AIControl _official)
+    {
+        _official.character.Move(Vector3.zero, false, false);
+        playerCamera.gameObject.SetActive(false);
+        Debug.Log("flag1");
+        cameraObj.GetComponent<Camera>().enabled = true;
+        GameObject.Find("LevelManager").GetComponent<WaveBehaviour>().setComponents(false); //Disable the movements for the player.
+    }
+
+    public void Execute(AIControl _official)
+    {
+        _official.character.Move(Vector3.zero, false, false);
+        _official.agent.Stop();
+        _official.agent.updateRotation = false;
+        _official.character.Move(Vector3.zero, false, false);
+        _official.agent.SetDestination(_official.transform.position);
+
+
+        _official.OfficialLookAt(_official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position); //Official looks at the found money.
+        cameraObj.GetComponent<Camera>().transform.position = _official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position + Vector3.up;
+        cameraObj.GetComponent<Camera>().transform.LookAt(_official.GetComponentInChildren<NPCDetection>().gameObject.transform.position);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            _official.GetComponentInChildren<NPCDetection>().endWave = true;
+
+    }
+
+    public void Exit(AIControl _official)
+    {
+    }
+}
+
 public class Leave : IState
 {
     Transform officialLeavePoint = GameObject.Find("Targets/OfficialLeavePoint").GetComponent<Transform>();
@@ -138,6 +170,29 @@ public class Leave : IState
 
     public void Exit(AIControl _official)
     { }
+}
+
+public class GlobalOfficialState : IState
+{
+    NPCDetection detection;
+    bool changedState;
+    public void Enter(AIControl _official)
+    {
+        detection = _official.GetComponentInChildren<NPCDetection>();
+    }
+
+    public void Execute(AIControl _official)
+    {
+        if (detection.moneyFound && !changedState) //Change state if money has been found
+        {
+            _official.getFSM().ChangeCurrentState(new MoneyFound());
+            changedState = true;
+        }
+    }
+
+    public void Exit(AIControl _official)
+    {
+    }
 }
 
 public class OfficialStateMachine : MonoBehaviour
@@ -165,9 +220,9 @@ public class OfficialStateMachine : MonoBehaviour
         }
     }
 
-    public void ChangeCurrentState(IState newState)
+    public void ChangeCurrentState(IState _state)
     {
-        currentState = newState;
+        currentState = _state;
         currentState.Enter(official);
     }
 
