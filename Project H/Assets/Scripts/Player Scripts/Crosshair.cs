@@ -4,7 +4,7 @@ public class Crosshair : MonoBehaviour
 {
     public Texture2D crosshair;
     public Rect pos;
-    static bool OriginalOn = true;
+    public bool OriginalOn = true;
     public bool CursorLock = false;
     public TextMesh infoText;
     RaycastHit hit;
@@ -23,7 +23,7 @@ public class Crosshair : MonoBehaviour
 
         pos = new Rect((Screen.width - crosshair.width) / 2, (Screen.height - crosshair.height) / 2, crosshair.width, crosshair.height);
         infoText.text = null;
-
+        CursorLock = true;
 
     }
 

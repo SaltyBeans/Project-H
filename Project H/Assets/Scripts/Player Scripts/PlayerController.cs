@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             speed = 10f;
             running = true;
         }
-
+        
         //Apply rotation
         motor.Rotate(_rotation);
 

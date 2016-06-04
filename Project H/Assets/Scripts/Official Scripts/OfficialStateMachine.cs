@@ -97,17 +97,24 @@ public class Search : IState //TODO: implement Search state
 {
     public void Enter(AIControl _official)
     {
-
+        Debug.Log("Entered Search State");
+        _official.agent.updateRotation = true;
+        
+        _official.agent.Resume();
     }
 
     public void Execute(AIControl _official)
     {
-
+        _official.StopAndLook();
+        if (_official.ShouldILeave())
+        {
+            Exit(_official);
+        }
     }
 
     public void Exit(AIControl _official)
     {
-
+        _official.getFSM().ChangeCurrentState(new Leave());
     }
 }
 
