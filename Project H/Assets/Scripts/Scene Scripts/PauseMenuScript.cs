@@ -7,14 +7,16 @@ public class PauseMenuScript : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject player;
+    private bool pauseMenuIsOn;
 
 	void Start ()
 	{
         pauseMenu.SetActive(false);
+	    pauseMenuIsOn = false;
 	}
 	
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Escape))
+	    if (Input.GetKeyDown(KeyCode.Escape)&&!Input.GetKey(KeyCode.Tab))
 	    {
             Debug.Log("Escape Pressed");
 	        if (Time.timeScale == 1)
@@ -22,6 +24,7 @@ public class PauseMenuScript : MonoBehaviour
                 pauseMenu.SetActive(true);
                 player.GetComponent<Crosshair>().OriginalOn = false;
                 player.GetComponent<Crosshair>().CursorLock = false;
+                pauseMenuIsOn = true;
                 Time.timeScale = 0;
             }
             else if (Time.timeScale == 0)
@@ -29,6 +32,7 @@ public class PauseMenuScript : MonoBehaviour
                 pauseMenu.SetActive(false);
                 player.GetComponent<Crosshair>().OriginalOn = true;
                 player.GetComponent<Crosshair>().CursorLock = true;
+                pauseMenuIsOn = false;
                 Time.timeScale = 1;
             }
 	    }
@@ -44,6 +48,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         Debug.Log("Quit To Main Menu Pressed");
         pauseMenu.SetActive(false);
+        pauseMenuIsOn = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
@@ -59,6 +64,12 @@ public class PauseMenuScript : MonoBehaviour
         pauseMenu.SetActive(false);
         player.GetComponent<Crosshair>().OriginalOn = true;
         player.GetComponent<Crosshair>().CursorLock = true;
+        pauseMenuIsOn = false;
         Time.timeScale = 1;
+    }
+
+    public bool getPauseMenuStatus()
+    {
+        return pauseMenuIsOn;
     }
 }

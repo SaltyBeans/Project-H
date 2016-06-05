@@ -4,17 +4,19 @@ using System.Collections;
 public class MoneyTransactionScript : MonoBehaviour
 {
     private GameObject[] sceneMoney;
-
+    private float totalCash;
     void Start()
     {
         sceneMoney = GameObject.FindGameObjectsWithTag("Money");
+        CalculateTotalCash();
     }
 
     public void Buy(int price)
     {
+        sceneMoney = GameObject.FindGameObjectsWithTag("Money");
         bool priceIsPaid = false;
         int index = 0;
-        while (!priceIsPaid && index <= sceneMoney.Length)
+        while (!priceIsPaid && index < sceneMoney.Length)
         {
             if (price >= 10000)
             {
@@ -24,7 +26,7 @@ public class MoneyTransactionScript : MonoBehaviour
             }
             else
             {
-                if (sceneMoney[index].GetComponent<MoneyScript10K>().getMoneyAmount() >= price && sceneMoney[index].GetComponent<MoneyScript10K>().getMoneyAmount() != 10000)
+                if (sceneMoney[index].GetComponent<MoneyScript10K>().getMoneyAmount() >= price)
                 {
                     sceneMoney[index].GetComponent<MoneyScript10K>().setMoneyAmout(sceneMoney[index].GetComponent<MoneyScript10K>().getMoneyAmount() - price);
                     price = 0;
@@ -39,5 +41,19 @@ public class MoneyTransactionScript : MonoBehaviour
             if (price == 0)
                 priceIsPaid = true;            
         }
+        CalculateTotalCash();
+    }
+
+    private void CalculateTotalCash()
+    {
+        totalCash = 0;
+        foreach (GameObject money in sceneMoney)
+        {
+            totalCash += money.GetComponent<MoneyScript10K>().getMoneyAmount();
+        }
+    }
+    public float getTotalCash()
+    {
+        return totalCash;
     }
 }
