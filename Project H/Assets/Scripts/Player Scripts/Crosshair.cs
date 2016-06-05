@@ -72,7 +72,7 @@ public class Crosshair : MonoBehaviour
             else if (hit.collider.tag == "Telephone") //Show phone info. TODO: check if the timer has ended, if not, then show the info.
             {
                 if (GameObject.Find("LevelManager").GetComponent<HideWaveScript>().hideTime > 0)
-                    infoText.text = "Click to end the timer.";
+                    infoText.text = "Click [LMB] to end the timer.";
 
                 else
                     infoText.text = null;
@@ -81,6 +81,15 @@ public class Crosshair : MonoBehaviour
             else if (hit.collider.tag == "sHammer")
             {
                 infoText.text = "Click [LMB] to Pick Up";
+            }
+            else if (hit.collider.tag == "breakable" &&
+                     hit.collider.GetComponent<BreakablePartScript>().GetBreakablePartStatus())
+            {
+                infoText.text = "Press [R] to Repair";
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    hit.collider.GetComponent<BreakablePartScript>().RepairPart();
+                }
             }
             else
             {
