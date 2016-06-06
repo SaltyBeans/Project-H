@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _velocity;
     public bool isRunning { get { return running; } private set { } }
     private bool running;
+    private bool jumping;
     void Start()
     {
         motor = GetComponent<PlayerMotor>();
@@ -51,6 +52,12 @@ public class PlayerController : MonoBehaviour
         {
             speed = 10f;
             running = true;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumping = true;
+            _velocity += gameObject.transform.up * 15f;
         }
 
         //Apply rotation
