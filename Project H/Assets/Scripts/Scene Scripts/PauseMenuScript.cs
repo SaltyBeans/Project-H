@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
@@ -9,18 +8,19 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject player;
     private bool pauseMenuIsOn;
 
-	void Start ()
-	{
+    void Start()
+    {
         pauseMenu.SetActive(false);
-	    pauseMenuIsOn = false;
-	}
-	
-	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Escape)&&!Input.GetKey(KeyCode.Tab))
-	    {
+        pauseMenuIsOn = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !Input.GetKey(KeyCode.Tab))
+        {
             Debug.Log("Escape Pressed");
-	        if (Time.timeScale == 1)
-	        {
+            if (Time.timeScale == 1)
+            {
                 pauseMenu.SetActive(true);
                 player.GetComponent<Crosshair>().OriginalOn = false;
                 player.GetComponent<Crosshair>().CursorLock = false;
@@ -35,8 +35,8 @@ public class PauseMenuScript : MonoBehaviour
                 pauseMenuIsOn = false;
                 Time.timeScale = 1;
             }
-	    }
-	}
+        }
+    }
 
     public void quitToDesktop()
     {

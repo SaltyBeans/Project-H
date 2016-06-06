@@ -81,7 +81,7 @@ public class LookAtDoor : IState
 
             else //If the attention is low, leave.
             {
-                _official.GetComponent<OfficialStateMachine>().ChangeCurrentState(new Leave());
+                _official.getFSM().ChangeCurrentState(new Leave());
             }
         }
     }
@@ -98,7 +98,7 @@ public class Search : IState //TODO: implement Search state
     {
         Debug.Log("Entered Search State");
         _official.agent.updateRotation = true;
-        
+
         _official.agent.Resume();
     }
 
@@ -120,13 +120,17 @@ public class Search : IState //TODO: implement Search state
 public class MoneyFound : IState
 {
     GameObject cameraObj = new GameObject("Found Money Camera", typeof(Camera));
+    Camera moneyCamera;
+    NPCDetection detectionScript;
     Camera playerCamera = Camera.main;
     public void Enter(AIControl _official)
     {
         _official.character.Move(Vector3.zero, false, false);
         playerCamera.gameObject.SetActive(false);
         Debug.Log("flag1");
-        cameraObj.GetComponent<Camera>().enabled = true;
+        moneyCamera = cameraObj.GetComponent<Camera>();
+        moneyCamera.enabled = true;
+        detectionScript = detectionScript;
         GameObject.Find("LevelManager").GetComponent<WaveBehaviour>().setComponents(false); //Disable the movements for the player.
     }
 
@@ -139,12 +143,12 @@ public class MoneyFound : IState
         _official.agent.SetDestination(_official.transform.position);
 
 
-        _official.OfficialLookAt(_official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position); //Official looks at the found money.
-        cameraObj.GetComponent<Camera>().transform.position = _official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position + (Vector3.up * 0.50f) + ((_official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position - _official.GetComponent<Transform>().position).normalized * 1.5f);
-        cameraObj.GetComponent<Camera>().transform.LookAt(_official.GetComponentInChildren<NPCDetection>().gameObject.transform.position);
+        _official.OfficialLookAt(detectionScript.moneyLook.transform.position); //Official looks at the found money.
+        moneyCamera.transform.position = detectionScript.moneyLook.transform.position + (Vector3.up * 0.50f) + ((detectionScript.moneyLook.transform.position - _official.GetComponent<Transform>().position).normalized * 1.5f);
+        moneyCamera.transform.LookAt(detectionScript.gameObject.transform.position);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            _official.GetComponentInChildren<NPCDetection>().endWave = true;
+            detectionScript.endWave = true;
 
     }
 
