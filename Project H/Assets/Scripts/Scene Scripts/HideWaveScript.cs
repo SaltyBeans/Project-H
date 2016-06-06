@@ -39,5 +39,6 @@ public class HideWaveScript : MonoBehaviour
                 officialSpawned = true;
             }
         }
+
     }
 }

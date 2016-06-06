@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public interface IState
 {
     void Enter(AIControl _official);
@@ -134,7 +133,7 @@ public class MoneyFound : IState
 
 
         _official.OfficialLookAt(_official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position); //Official looks at the found money.
-        cameraObj.GetComponent<Camera>().transform.position = _official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position + Vector3.up;
+        cameraObj.GetComponent<Camera>().transform.position = _official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position + (Vector3.up * 0.50f) + ((_official.GetComponentInChildren<NPCDetection>().moneyLook.transform.position - _official.GetComponent<Transform>().position).normalized * 1.5f);
         cameraObj.GetComponent<Camera>().transform.LookAt(_official.GetComponentInChildren<NPCDetection>().gameObject.transform.position);
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -165,7 +164,6 @@ public class Leave : IState
 
         if (Vector3.Distance(_official.gameObject.transform.position, officialLeavePoint.position) < 0.5)
             _official.inspectionComplete = true;
-
     }
 
     public void Exit(AIControl _official)
@@ -178,11 +176,13 @@ public class GlobalOfficialState : IState
     bool changedState;
     public void Enter(AIControl _official)
     {
+        //detection = _official.GetComponentInChildren<NPCDetection>();
         detection = _official.GetComponentInChildren<NPCDetection>();
     }
 
     public void Execute(AIControl _official)
     {
+
         if (detection.moneyFound && !changedState) //Change state if money has been found
         {
             _official.getFSM().ChangeCurrentState(new MoneyFound());
@@ -231,4 +231,6 @@ public class OfficialStateMachine : MonoBehaviour
         globalState = _state;
         globalState.Enter(official);
     }
+
+
 }

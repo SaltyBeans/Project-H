@@ -32,37 +32,36 @@ public class NPCDetection : MonoBehaviour
 
     void Update()
     {
-        foreach (GameObject money in foundMoney)
-        {
-            Vector3 relativeMoneyPos = money.transform.position - transform.position;
-            if (Physics.Raycast(transform.position, relativeMoneyPos, out hit))
-            {
-                if (hit.collider.tag == "Money") //At least one of the money in visual detection volume is visible.
-                {
-                    moneyLook = money; //Set moneyLook to official to look at.
-                    moneyFound = true;
-                    Vector3[] pos = new Vector3[] { gameObject.transform.position, hit.collider.gameObject.transform.position };
-
-                    ray.SetPositions(pos);
-                    break;
-                }
-                if (hit.collider.tag != "Money")
-                    moneyFound = false;
-
-            }
-        }
-
-
-        if (moneyFound == true)
+        if (!moneyFound)
         {
             detectionMaterial.color = detectionColor;
+
+
+            foreach (GameObject money in foundMoney)
+            {
+                Vector3 relativeMoneyPos = money.transform.position - transform.position;
+                if (Physics.Raycast(transform.position, relativeMoneyPos, out hit))
+                {
+                    if (hit.collider.tag == "Money") //At least one of the money in visual detection volume is visible.
+                    {
+                        moneyLook = money; //Set moneyLook to official to look at.
+                        moneyFound = true;
+                        Vector3[] pos = new Vector3[] { gameObject.transform.position, hit.point };
+
+                        ray.SetPositions(pos);
+                        break;
+                    }
+                    if (hit.collider.tag != "Money")
+                        moneyFound = false;
+
+                }
+            }
+
         }
+
         else
         {
             detectionMaterial.color = defaultColor;
-
-            ray.SetPosition(0, resetRay);
-            ray.SetPosition(1, resetRay);
         }
 
     }
