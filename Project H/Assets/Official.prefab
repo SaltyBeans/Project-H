@@ -2534,6 +2534,8 @@ MonoBehaviour:
   - {fileID: 0}
   ethanbody: {fileID: 414234}
   ethanhead: {fileID: 491846}
+  stopPoints: []
+  lookPoints: []
   stoppoint1:
   - {fileID: 0}
   stoppoint2: []

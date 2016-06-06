@@ -31,14 +31,14 @@ public class AIControl : MonoBehaviour
 
     private OfficialStateMachine stateMachine;
 
+    Vector3 OfficialLookTarget = Vector3.zero;
     int lookCounter;
     RaycastHit hit;
     int targetCounter;
     private bool shouldLeave;
     bool lookingState;
     bool lookedAtObjects;
-    [SerializeField]
-    private float lookForSeconds;
+    public float lookForSeconds;
     float time;
 
     public bool inspectionComplete;
@@ -86,19 +86,26 @@ public class AIControl : MonoBehaviour
 
     void LateUpdate()
     {
-        if (/*lookedAtObjects == false &&*/ lookingState == true)
-        {
-            Quaternion firstRot = ethanbody.transform.rotation;
-            ethanbody.transform.LookAt(lookPoints[index].position/*getRoom()[lookCounter].GetComponent<Transform>().position*/);
-            firstRot.y = ethanbody.transform.localRotation.y;
-            ethanbody.transform.localRotation = firstRot;
+        //if (/*lookedAtObjects == false &&*/ lookingState == true)
+        //{
+        //    Quaternion firstRot = ethanbody.transform.rotation;
+        //    ethanbody.transform.LookAt(lookPoints[index].position/*getRoom()[lookCounter].GetComponent<Transform>().position*/);
+        //    firstRot.y = ethanbody.transform.localRotation.y;
+        //    ethanbody.transform.localRotation = firstRot;
 
-            //OfficialLookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
-            OfficialLookAt(lookPoints[index].position);
-            //Debug.Log("looking at: " + getRoom()[lookCounter].GetComponent<Transform>().name);
+        //    //OfficialLookAt(getRoom()[lookCounter].GetComponent<Transform>().position);
+        //    OfficialLookAt(lookPoints[index].position);
+        //    //Debug.Log("looking at: " + getRoom()[lookCounter].GetComponent<Transform>().name);
+        //}
+
+
+        if (OfficialLookTarget != Vector3.zero)
+        {
+            ethanhead.transform.LookAt(OfficialLookTarget); //Look at that position.
+            ethanhead.transform.Rotate(90, 0, 0);
+            ethanhead.transform.Rotate(0, -90, 0);
         }
     }
-
     IEnumerator StartGlobalState()
     {
         yield return new WaitForSeconds(1.5f); //Wait, so all of the objects can instantiate.
@@ -138,15 +145,18 @@ public class AIControl : MonoBehaviour
     }
 
     /// <summary>
-    /// Official locks on and looks at the target.
+    /// Official locks on and looks at the target. This method requires high maintenance. Whenever you use it, reset the look target by passing Vector3.zero when you are done.
     /// </summary>
     /// <param name="_lookAtTarget">Target to look at.</param>
-    public void OfficialLookAt(Vector3 _lookAtTarget)
+    public void OfficialLookAt(Vector3 _lookAtTarget) //TODO: fix this look at logic
     {
-        ethanhead.transform.LookAt(_lookAtTarget); //Look at those objects.
-        ethanhead.transform.Rotate(90, 0, 0);
-        ethanhead.transform.Rotate(0, -90, 0);
+        //ethanhead.transform.LookAt(_lookAtTarget); //Look at that position.
+        //ethanhead.transform.Rotate(90, 0, 0);
+        //ethanhead.transform.Rotate(0, -90, 0);
+        OfficialLookTarget = _lookAtTarget;
     }
+
+
 
     public void SetTarget(Transform target)
     {
@@ -192,7 +202,7 @@ public class AIControl : MonoBehaviour
                         agent.Resume();
                         lookingState = false;
                     }
-                    
+
                 }
             }
         }
@@ -214,7 +224,7 @@ public class AIControl : MonoBehaviour
                     agent.SetDestination(target[targetCounter].position);
 
                     if (Vector3.Distance(gameObject.transform.position, target[targetCounter].GetComponent<Transform>().position) < 0.5f && targetCounter < target.Length)
-                        //If Official is closer than 1.5 to the target and next target is not OutOfBounds
+                    //If Official is closer than 1.5 to the target and next target is not OutOfBounds
                     {
                         lookingState = true;              // Not walking, looking
                         lookedAtObjects = false;     //Didn't look at every object in the current -new- room

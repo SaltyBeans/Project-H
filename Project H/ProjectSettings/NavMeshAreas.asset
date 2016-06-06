@@ -10,7 +10,7 @@ NavMeshAreas:
   - name: Not Walkable
     cost: 1
   - name: Jump
-    cost: 2
+    cost: 1
   - name: 
     cost: 1
   - name: 
