@@ -863,6 +863,8 @@ GameObject:
   - 136: {fileID: 13629994}
   - 114: {fileID: 11405516}
   - 114: {fileID: 11481822}
+  - 114: {fileID: 11443094}
+  - 114: {fileID: 11474954}
   m_Layer: 0
   m_Name: Official
   m_TagString: Official
@@ -2248,8 +2250,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.264, y: 0.5, z: -24.74}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 33.1, y: 0.5, z: -25.2}
   m_LocalScale: {x: 2.1, y: 2.1, z: 1.69}
   m_Children:
   - {fileID: 414234}
@@ -2372,7 +2374,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -2559,6 +2561,32 @@ MonoBehaviour:
   detectionMaterial: {fileID: 2100000, guid: a0546c08ef9bcf34190d6e07efb412b4, type: 2}
   ray: {fileID: 0}
   moneyFound: 0
+  endWave: 0
+  moneyLook: {fileID: 0}
+--- !u!114 &11443094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffedbbcbc03c5c4fb766a49aee9982a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attentionText: {fileID: 0}
+  attentionSlider: {fileID: 0}
+--- !u!114 &11474954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb40d81ffe6589498309e2a03617601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11481822
 MonoBehaviour:
   m_ObjectHideFlags: 1

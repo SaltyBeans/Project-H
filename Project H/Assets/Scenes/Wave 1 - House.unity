@@ -5091,12 +5091,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487954, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 11418318, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
-      propertyPath: ray
-      value: 
-      objectReference: {fileID: 1878396624}
     - target: {fileID: 11405516, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
       propertyPath: target.Array.data[0]
       value: 
@@ -5105,14 +5101,18 @@ Prefab:
       propertyPath: stoppoint1.Array.data[0]
       value: 
       objectReference: {fileID: 27545250}
-    - target: {fileID: 13771300, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2379004, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 11418318, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
+      propertyPath: ray
+      value: 
+      objectReference: {fileID: 1878396624}
+    - target: {fileID: 11443094, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
+      propertyPath: attentionText
+      value: 
+      objectReference: {fileID: 892873199}
+    - target: {fileID: 11443094, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
+      propertyPath: attentionSlider
+      value: 
+      objectReference: {fileID: 1688464687}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
   m_IsPrefabParent: 0
@@ -9371,7 +9371,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 402920, guid: 44cb241fa8f91004c8cc941c7769c4f1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 7.0008
       objectReference: {fileID: 0}
     - target: {fileID: 402920, guid: 44cb241fa8f91004c8cc941c7769c4f1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9400,6 +9400,10 @@ Prefab:
     - target: {fileID: 402920, guid: 44cb241fa8f91004c8cc941c7769c4f1, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 402920, guid: 44cb241fa8f91004c8cc941c7769c4f1, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.0775898
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44cb241fa8f91004c8cc941c7769c4f1, type: 2}
@@ -14048,30 +14052,6 @@ MeshFilter:
 GameObject:
   m_PrefabParentObject: {fileID: 171278, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
   m_PrefabInternal: {fileID: 373067131}
---- !u!114 &1081412601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1081412600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ffedbbcbc03c5c4fb766a49aee9982a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attentionText: {fileID: 892873199}
-  attentionSlider: {fileID: 1688464687}
---- !u!114 &1081412602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1081412600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb40d81ffe6589498309e2a03617601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1084340825
 GameObject:
   m_ObjectHideFlags: 0
