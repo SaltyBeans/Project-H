@@ -5,10 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - door
-  - BedRoom
-  - BathRoom
-  - Kitchen
-  - LivingRoom
   - outsidedoor
   - Money
   - hideSpot
@@ -20,6 +16,8 @@ TagManager:
   - sHammer
   - breakable
   - hatch
+  - StopPosition
+  - LookPosition
   layers:
   - Default
   - TransparentFX
