@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 public interface IState
 {
     void Enter(AIControl _official);
@@ -8,7 +10,7 @@ public interface IState
 
 public class GoToDoor : IState
 {
-    Transform doorStopPoint = GameObject.Find("Targets/DoorStopPoint").GetComponent<Transform>();
+    Transform doorStopPoint = GameObject.Find("AIStopPositions/StopPos#1").GetComponent<Transform>();
     HideWaveScript waveTimer = GameObject.Find("LevelManager").GetComponent<HideWaveScript>();
     bool targetSet = false;
     public void Enter(AIControl _official)
@@ -39,7 +41,7 @@ public class GoToDoor : IState
 public class LookAtDoor : IState
 {
     float time = Time.time;
-    Transform doorLookAt = GameObject.Find("DoorLookAt").GetComponent<Transform>();
+    Transform doorLookAt = GameObject.Find("AILookPositions/LookPos#1").GetComponent<Transform>();
     AudioSource audSouce;
     OfficialAttention offAttention;
     uint numOfKnocks = 0;
@@ -69,8 +71,10 @@ public class LookAtDoor : IState
             if (offAttention.getAttentionValue() > 50f) //If the attention is high enough, knock.
             {
                 if (doorScript.getState()) //If the door is open
+                {
+                    _official.OfficialLookAt(Vector3.zero);
                     _official.getFSM().ChangeCurrentState(new Search());
-
+                }
                 if (numOfKnocks > 2) //After two knocks, increment the attention.
                     offAttention.IncrementAttention(5f);
 
@@ -81,6 +85,7 @@ public class LookAtDoor : IState
 
             else //If the attention is low, leave.
             {
+                _official.OfficialLookAt(Vector3.zero);
                 _official.getFSM().ChangeCurrentState(new Leave());
             }
         }
@@ -88,33 +93,123 @@ public class LookAtDoor : IState
 
     public void Exit(AIControl _official)
     {
-
     }
 }
 
 public class Search : IState //TODO: implement Search state
 {
+    List<GameObject> currentStopPoints = new List<GameObject>();
+
+    List<GameObject> currentLookPoints = new List<GameObject>();
+
+    int searchLevel;
+
     public void Enter(AIControl _official)
     {
+        float attention = _official.GetComponent<OfficialAttention>().getAttentionValue();
+
+        //Determine the searchLevel 
+        //if (attention <= 50f)                         //0...50
+        //    searchLevel = 1;
+
+        if (attention <= 75f && attention > 50f) //50...75
+            searchLevel = 2;
+
+        else if (attention < 90f && attention > 75f) //75...90
+            searchLevel = 3;
+
+        else if (attention >= 90f)                   //90...100
+            searchLevel = 4;
+
         Debug.Log("Entered Search State");
         _official.agent.updateRotation = true;
 
         _official.agent.Resume();
+
+        GameObject[] allStopPoints = GameObject.FindGameObjectsWithTag("StopPosition");
+        GameObject[] allLookPoints = GameObject.FindGameObjectsWithTag("LookPosition");
+
+
+        foreach (var item in allStopPoints)                     //Get appropriate stop and look points
+            if (item.name.StartsWith("StopPos#" + searchLevel))
+                currentStopPoints.Add(item);
+
+
+        foreach (var item in allLookPoints)
+            if (item.name.StartsWith("LookPos#" + searchLevel))
+                currentLookPoints.Add(item);
+
+        var sortedBufferPoints = currentStopPoints.OrderBy(go => go.name).ToList(); //Sort look and stop points
+        currentStopPoints = sortedBufferPoints;
+
+        sortedBufferPoints = currentLookPoints.OrderBy(go => go.name).ToList();
+        currentLookPoints = sortedBufferPoints;
+
     }
 
+    float lookTime = 0f;
+    int index = 0;
     public void Execute(AIControl _official)
     {
-        _official.StopAndLook();
-        if (_official.ShouldILeave())
+        if (currentStopPoints.Count > index)
         {
-            Exit(_official);
+            if (Vector3.Distance(_official.transform.position, currentStopPoints[index].transform.position) < 0.5f)
+            //Looking
+            {
+                _official.OfficialLookAt(currentLookPoints[index].transform.position);
+                _official.character.Move(Vector3.zero, false, false);
+                Debug.Log("currently looking at: " + currentLookPoints[index].name);
+
+                if (Time.time - lookTime > _official.lookForSeconds)
+                    index++;
+            }
+
+            else //Moving
+            {
+                _official.OfficialLookAt(Vector3.zero);
+                _official.agent.SetDestination(currentStopPoints[index].transform.position);
+                _official.character.Move(_official.agent.desiredVelocity, false, false);
+                Debug.Log("currently going to: " + currentStopPoints[index].name);
+                lookTime = Time.time;
+            }
+        }
+        else
+        {
+            _official.OfficialLookAt(Vector3.zero);
+            _official.getFSM().ChangeCurrentState(new Leave());
         }
     }
 
     public void Exit(AIControl _official)
     {
-        _official.getFSM().ChangeCurrentState(new Leave());
     }
+}
+
+public class Leave : IState
+{
+    GameObject officialLeavePoint = GameObject.Find("OfficialLeavePos");
+    public void Enter(AIControl _official)
+    {
+        _official.agent.Resume();
+        _official.agent.updateRotation = true;
+        _official.OfficialLookAt(Vector3.zero);
+        _official.agent.SetDestination(officialLeavePoint.transform.position);
+        _official.character.Move(_official.agent.desiredVelocity, false, false);
+    }
+
+    public void Execute(AIControl _official)
+    {
+        _official.agent.Resume();
+        _official.agent.updateRotation = true;
+        _official.agent.SetDestination(officialLeavePoint.transform.position);
+        _official.character.Move(_official.agent.desiredVelocity, false, false);
+
+        if (Vector3.Distance(_official.gameObject.transform.position, officialLeavePoint.transform.position) < 0.5)
+            _official.inspectionComplete = true;
+    }
+
+    public void Exit(AIControl _official)
+    { }
 }
 
 public class MoneyFound : IState
@@ -127,10 +222,9 @@ public class MoneyFound : IState
     {
         _official.character.Move(Vector3.zero, false, false);
         playerCamera.gameObject.SetActive(false);
-        Debug.Log("flag1");
         moneyCamera = cameraObj.GetComponent<Camera>();
         moneyCamera.enabled = true;
-        detectionScript = detectionScript;
+        detectionScript = _official.GetComponentInChildren<NPCDetection>();
         GameObject.Find("LevelManager").GetComponent<WaveBehaviour>().setComponents(false); //Disable the movements for the player.
     }
 
@@ -139,7 +233,6 @@ public class MoneyFound : IState
         _official.character.Move(Vector3.zero, false, false);
         _official.agent.Stop();
         _official.agent.updateRotation = false;
-        _official.character.Move(Vector3.zero, false, false);
         _official.agent.SetDestination(_official.transform.position);
 
 
@@ -156,38 +249,12 @@ public class MoneyFound : IState
     {
     }
 }
-
-public class Leave : IState
-{
-    Transform officialLeavePoint = GameObject.Find("Targets/OfficialLeavePoint").GetComponent<Transform>();
-    public void Enter(AIControl _official)
-    {
-        _official.agent.SetDestination(officialLeavePoint.position);
-
-        _official.agent.Resume();
-        _official.agent.updateRotation = true;
-    }
-
-    public void Execute(AIControl _official)
-    {
-        _official.agent.SetDestination(officialLeavePoint.transform.position);
-        _official.character.Move(_official.agent.desiredVelocity, false, false);
-
-        if (Vector3.Distance(_official.gameObject.transform.position, officialLeavePoint.position) < 0.5)
-            _official.inspectionComplete = true;
-    }
-
-    public void Exit(AIControl _official)
-    { }
-}
-
 public class GlobalOfficialState : IState
 {
     NPCDetection detection;
     bool changedState;
     public void Enter(AIControl _official)
     {
-        //detection = _official.GetComponentInChildren<NPCDetection>();
         detection = _official.GetComponentInChildren<NPCDetection>();
     }
 

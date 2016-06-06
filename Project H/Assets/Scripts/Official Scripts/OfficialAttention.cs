@@ -24,6 +24,11 @@ public class OfficialAttention : MonoBehaviour
     void Update()
     {
         attentionSlider.value = officialAttention;
+
+        if (Input.GetKeyDown(KeyCode.I)) //TODO: debug, remove
+        {
+            officialAttention = 51f;
+        }
     }
 
     public float getAttentionValue()
