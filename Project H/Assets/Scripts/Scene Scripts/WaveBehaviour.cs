@@ -197,7 +197,7 @@ public class WaveBehaviour : MonoBehaviour
         levelFinished = false;
 
         official.SetActive(false); //Disable the official.
-        //Place the bought items to their place
+        GetComponent<AssetMenuScript>().placeBoughtItems();
         Debug.Log("official state " + official.activeSelf);
     }
 

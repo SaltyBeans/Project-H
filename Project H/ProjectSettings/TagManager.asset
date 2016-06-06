@@ -19,6 +19,7 @@ TagManager:
   - Telephone
   - sHammer
   - breakable
+  - hatch
   layers:
   - Default
   - TransparentFX

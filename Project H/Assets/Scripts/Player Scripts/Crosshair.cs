@@ -91,6 +91,21 @@ public class Crosshair : MonoBehaviour
                     hit.collider.GetComponent<BreakablePartScript>().RepairPart();
                 }
             }
+            else if (hit.collider.tag == "hatch")
+            {
+                if (!hit.collider.GetComponent<BasementScript>().getLockStatus())
+                {
+                    infoText.text = "Press [E] to Open/Close";
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        hit.collider.GetComponent<BasementScript>().OpenCloseHatch();
+                    }
+                }
+                else
+                {
+                    infoText.text = "It's Locked!";
+                }
+            }
             else
             {
                 infoText.text = null;

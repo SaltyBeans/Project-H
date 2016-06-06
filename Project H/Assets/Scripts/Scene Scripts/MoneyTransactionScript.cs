@@ -7,7 +7,6 @@ public class MoneyTransactionScript : MonoBehaviour
     private float totalCash;
     void Start()
     {
-        sceneMoney = GameObject.FindGameObjectsWithTag("Money");
         CalculateTotalCash();
     }
 
@@ -46,6 +45,7 @@ public class MoneyTransactionScript : MonoBehaviour
 
     private void CalculateTotalCash()
     {
+        sceneMoney = GameObject.FindGameObjectsWithTag("Money");
         totalCash = 0;
         foreach (GameObject money in sceneMoney)
         {
@@ -54,6 +54,7 @@ public class MoneyTransactionScript : MonoBehaviour
     }
     public float getTotalCash()
     {
+        CalculateTotalCash();
         return totalCash;
     }
 }
