@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 public class OfficialAttention : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class OfficialAttention : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I)) //TODO: debug, remove
         {
-            officialAttention = 51f;
+            IncrementAttention(25f);
         }
     }
 
@@ -38,6 +39,13 @@ public class OfficialAttention : MonoBehaviour
 
     public void IncrementAttention(float _value)
     {
-        officialAttention += _value;
+        if (officialAttention + _value >= attentionSlider.maxValue)
+        {
+            officialAttention = attentionSlider.maxValue;
+        }
+        else
+        {
+            officialAttention += _value;
+        } 
     }
 }

@@ -15,6 +15,8 @@ public class AssetMenuScript : MonoBehaviour
     public Text warningText;
     public GameObject basement;
     public GameObject sledgehammer;
+    public OfficialAttention officialAttention;
+
     //private float updateTotalCashTimer;
     private bool sledgeBought;
     private bool basementKeyBought;
@@ -62,7 +64,8 @@ public class AssetMenuScript : MonoBehaviour
         {
             if (transaction.getTotalCash() >= 1000)
             {
-                warningText.text = "Bought The Sledgehammer!";
+                warningText.text = "Bought The Sledgehammer!\nWarning: Official Attention increased!";
+                officialAttention.IncrementAttention(15f);
                 sledgeBought = true;
                 transaction.Buy(1000);
             }
@@ -75,7 +78,8 @@ public class AssetMenuScript : MonoBehaviour
         {
             if (transaction.getTotalCash() >= 5000)
             {
-                warningText.text = "Bought The Basement Key!";
+                warningText.text = "Bought The Basement Key!\nWarning: Official Attention increased!";
+                officialAttention.IncrementAttention(25f);
                 basementKeyBought = true;
                 transaction.Buy(5000);
             }

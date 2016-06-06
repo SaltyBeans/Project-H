@@ -55,7 +55,7 @@ public class Crosshair : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f)) //Cast a ray and show focused object's info.
         {
-            if (hit.collider.tag == "door") //Show door info.
+            if (hit.collider.tag == "door"||hit.collider.tag=="outsidedoor") //Show door info.
             {
                 if (hit.collider.GetComponent<DoorScript>().getState() == true)
                     infoText.text = "Press [E] to Close";

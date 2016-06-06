@@ -45,7 +45,7 @@ public class LookAtDoor : IState
     AudioSource audSouce;
     OfficialAttention offAttention;
     uint numOfKnocks = 0;
-    GameObject[] doors = GameObject.FindGameObjectsWithTag("door");
+    GameObject outsideDoor = GameObject.FindGameObjectWithTag("outsidedoor");
     DoorScript doorScript;
     public void Enter(AIControl _official)
     {
@@ -54,10 +54,7 @@ public class LookAtDoor : IState
         audSouce = _official.GetComponentInChildren<AudioSource>();
         offAttention = _official.GetComponent<OfficialAttention>();
         audSouce.clip = Resources.Load("knocking_sound") as AudioClip;
-
-        foreach (var item in doors) //Get the door script of the outside door.
-            if (item.name == "outsidedoor")
-                doorScript = item.GetComponent<DoorScript>();
+        doorScript = outsideDoor.GetComponent<DoorScript>();
 
     }
 

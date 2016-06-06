@@ -64,17 +64,16 @@ public class AIControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        //if (Physics.Raycast(ethanhead.transform.position, ethanhead.transform.up, out hit, 1.5f))
-        //{
-        //    if (hit.collider.tag == "door")
-        //    {
-        //        if (hit.collider.GetComponent<DoorScript>().getState() == false)
-        //        {
-        //            hit.collider.GetComponent<DoorScript>().OpenDoor();
-        //        }
-        //    }
-        //}
-
+        if (Physics.Raycast(ethanhead.transform.position, ethanhead.transform.up, out hit, 1.5f))
+        {
+            if (hit.collider.tag == "door")
+            {
+                if (hit.collider.GetComponent<DoorScript>().getState() == false)
+                {
+                    hit.collider.GetComponent<DoorScript>().OpenDoor();
+                }
+            }
+        }
     }
 
 
