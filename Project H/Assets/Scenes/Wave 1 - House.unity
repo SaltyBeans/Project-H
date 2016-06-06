@@ -5728,7 +5728,6 @@ Prefab:
       propertyPath: stoppoint1.Array.data[0]
       value: 
       objectReference: {fileID: 27545250}
-<<<<<<< HEAD
     - target: {fileID: 11418318, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
       propertyPath: ray
       value: 
@@ -5741,7 +5740,6 @@ Prefab:
       propertyPath: attentionSlider
       value: 
       objectReference: {fileID: 1688464687}
-=======
     - target: {fileID: 13771300, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
       propertyPath: m_Enabled
       value: 1
@@ -5814,7 +5812,6 @@ Prefab:
       propertyPath: lookPoints.Array.data[7]
       value: 
       objectReference: {fileID: 766262602}
->>>>>>> bbcd1dd1ed56abc0c7269987c760a9f6b8c98097
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bc9a35778b66b246a6e72e124b7355a, type: 2}
   m_IsPrefabParent: 0
