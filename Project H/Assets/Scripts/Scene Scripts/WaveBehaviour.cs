@@ -52,12 +52,6 @@ public class WaveBehaviour : MonoBehaviour
             EndTheWave(); // Game will not end until a stack is found OR inspection is complete. Those checks are inside EndTheWave()  
         }
 
-        if (Input.GetKeyDown(KeyCode.K)) //DEBUG
-        {
-            spawnMoney(515544, moneySpawnTransform.position);
-        }
-
-
         if (textUp)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //Skip option.
@@ -86,16 +80,17 @@ public class WaveBehaviour : MonoBehaviour
 
                     if (levelFinished)
                     {
-                        ResetTheWave();
 
                         if (successfulPlayer) //If player is successful
                         {
+                            ResetTheWave();
                             successfulWaves++;
                             StartTheWave();
                         }
 
                         else if (!successfulPlayer) // if player is not successful
                         {
+                            GameObject.FindGameObjectWithTag("Player").GetComponent<Crosshair>().CursorLock = false;
                             Cursor.visible = true;
                             Cursor.lockState = CursorLockMode.None;
                             // Unlock the cursor before loading the title screen.
@@ -131,7 +126,7 @@ public class WaveBehaviour : MonoBehaviour
         StartCoroutine(FadeTo(Text1, 1.0f, 2.0f));
         EndWaveTexture.SetActive(true);
 
-        hideScript.hideTime = (((int)successfulWaves + 1f) * 5f) + 5f;              //+5 is for the text screen.
+        hideScript.hideTime = (((int)successfulWaves + 1f) * 10f) + 5f;              // +5 is for the text screen.
         spawnMoney(((int)successfulWaves + 1) * 10000 * 5, moneySpawnTransform.position); //Spawn the money
     }
 
