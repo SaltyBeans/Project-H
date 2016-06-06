@@ -46,7 +46,7 @@ public class PlayerMotor : MonoBehaviour
         PerformMovement();
         PerformRotation();
     }
-
+    
     //Perform movement based on velocity variable
     void PerformMovement()
     {

@@ -87,9 +87,10 @@ public class HoldingScript : MonoBehaviour
         sledgeHammer.transform.parent = palm.transform.parent;
         sledgeHammer.transform.localPosition = new Vector3(0.25f,-8.89f,0.04f);
         sledgeHammer.transform.localRotation = Quaternion.Euler(1.482f,289.18f,11.18f);
-        sledgeHammer.GetComponent<Collider>().enabled = false;
+        //sledgeHammer.GetComponent<Collider>().enabled = false;
         sledgeHammer.GetComponent<Rigidbody>().velocity = Vector3.zero;
         sledgeHammer.GetComponent<Rigidbody>().isKinematic = true;
+        sledgeHammer.GetComponent<BoxCollider>().isTrigger = true;
         sledgeIsHeld = true;
         AnimateHand(handState.SLEDGE);
     }
@@ -118,6 +119,7 @@ public class HoldingScript : MonoBehaviour
             sledgeHammer.GetComponent<Rigidbody>().isKinematic = false;
             sledgeHammer.transform.parent = null;
             sledgeHammer.GetComponent<Rigidbody>().AddForce(camTransform.forward * 50f + (-camTransform.right * 15f));
+            sledgeHammer.GetComponent<BoxCollider>().isTrigger = false;
             sledgeHammer = null;
             sledgeIsHeld = false;
             AnimateHand(handState.OPEN);
