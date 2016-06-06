@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter))]
 public class AIControl : MonoBehaviour
@@ -52,8 +52,8 @@ public class AIControl : MonoBehaviour
         agent.updateRotation = true;
         agent.updatePosition = true;
         agent.speed = 0.5f;
-        stateMachine.ChangeGlobalState(new GlobalOfficialState());
         stateMachine.ChangeCurrentState(new GoToDoor());
+        StartCoroutine("StartGlobalState");
     }
 
     void FixedUpdate()
@@ -70,6 +70,8 @@ public class AIControl : MonoBehaviour
         //}
 
     }
+
+
 
     void Update()
     {
@@ -149,6 +151,12 @@ public class AIControl : MonoBehaviour
 
         //    Debug.Log("looking at: " + getRoom()[lookCounter].GetComponent<Transform>().name);
         //}
+    }
+
+    IEnumerator StartGlobalState()
+    {
+        yield return new WaitForSeconds(1.5f); //Wait, so all of the objects can instantiate.
+        stateMachine.ChangeGlobalState(new GlobalOfficialState());
     }
 
     public OfficialStateMachine getFSM()
