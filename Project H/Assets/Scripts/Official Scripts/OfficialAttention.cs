@@ -1,15 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 public class OfficialAttention : MonoBehaviour
 {
 
-    private float officialAttention;
+    public float officialAttention;
     public Text attentionText;
     public Slider attentionSlider;
     void Start()
     {
-        officialAttention = 15f;
 
         attentionText.text = "Attention";
 
@@ -46,6 +44,6 @@ public class OfficialAttention : MonoBehaviour
         else
         {
             officialAttention += _value;
-        } 
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LoadInformation
+public static class LoadInformation
 {
     /// <summary>
     /// Load all info about the game to the GameInstanceInformation.
@@ -9,9 +9,10 @@ public class LoadInformation
     {
         GameInstanceInformation.PlayerAttentionLevel = PlayerPrefs.GetFloat("PlayerAttentionLevel");
         GameInstanceInformation.MoneyLocations = PlayerPrefsX.GetVector3Array("MoneyLocations");
-        GameInstanceInformation.MoneyRotations = PlayerPrefsX.GetQuaternionArray("MoneyRotations");
-        GameInstanceInformation.PlayerMoneyInAssets = PlayerPrefs.GetFloat("PlayerMoneyInAssets");
+        //GameInstanceInformation.MoneyRotations = PlayerPrefsX.GetQuaternionArray("MoneyRotations");
+        GameInstanceInformation.PlayerMoney = PlayerPrefs.GetFloat("PlayerMoney");
+        GameInstanceInformation.SledgehammerBought = PlayerPrefsX.GetBool("SledgehammerBought");
+        GameInstanceInformation.BasementBought = PlayerPrefsX.GetBool("BasementBought");
+        GameInstanceInformation.SuccessfulWaves = PlayerPrefs.GetInt("SuccessfulWaves");
     }
-
-
 }

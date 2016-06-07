@@ -18,6 +18,7 @@ TagManager:
   - hatch
   - StopPosition
   - LookPosition
+  - LevelManager
   layers:
   - Default
   - TransparentFX

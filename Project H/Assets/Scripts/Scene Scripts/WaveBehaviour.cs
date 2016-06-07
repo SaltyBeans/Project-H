@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class WaveBehaviour : MonoBehaviour
@@ -27,7 +28,7 @@ public class WaveBehaviour : MonoBehaviour
 
     bool successfulPlayer = false;
     bool levelFinished = false;
-
+    GameInstanceInformation instanceInfo;
     public uint successfulWaves { get; private set; }
     void Awake()
     {
@@ -39,6 +40,42 @@ public class WaveBehaviour : MonoBehaviour
         moneySpawnTransform = GameObject.Find("SpawnPositions/MoneySpawnPosition").GetComponent<Transform>();
 
         official.SetActive(false);
+        instanceInfo = GameObject.Find("Game Information").GetComponent<GameInstanceInformation>();
+
+        AssetMenuScript assetScript = GetComponent<AssetMenuScript>();
+
+        if (instanceInfo.loadedGame) //If player clicked on load game button
+        {
+            LoadInformation.LoadAllInformation();
+            official.GetComponent<OfficialAttention>().officialAttention = GameInstanceInformation.PlayerAttentionLevel;
+
+            successfulWaves = (uint)GameInstanceInformation.SuccessfulWaves;
+
+            foreach (var mon in GameInstanceInformation.MoneyLocations)
+                GameObject.Instantiate(moneyPrefab, mon, Quaternion.identity);
+
+
+            if (GameInstanceInformation.PlayerMoney % 10000 != 0)
+                GameObject.FindGameObjectWithTag("Money").GetComponent<MoneyScript10K>().setMoneyAmout(Mathf.FloorToInt(GameInstanceInformation.PlayerMoney % 10000));
+
+
+            if (GameInstanceInformation.SledgehammerBought)
+                assetScript.sledgeBought = true;
+
+            if (GameInstanceInformation.BasementBought)
+                assetScript.basementKeyBought = true;
+
+            assetScript.placeBoughtItems();
+        }
+        else
+        {
+            official.GetComponent<OfficialAttention>().officialAttention = 0;
+            assetScript.sledgeBought = false;
+            assetScript.basementKeyBought = false;
+            assetScript.itemYBought = false;
+            assetScript.itemZBought = false;
+            successfulWaves = 0;
+        }
 
         StartTheWave();
     }
@@ -106,6 +143,7 @@ public class WaveBehaviour : MonoBehaviour
 
     void StartTheWave()
     {
+        SaveGame();
         //Stop the fadeIn coroutine so the next 3 text's will be transparent in the next frame.
         StopAllCoroutines();
         // A coroutine artifact started from previous fadeIn makes 3rd text visible before the 1st and 2nd.
@@ -212,6 +250,10 @@ public class WaveBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the components of the player to desired state.
+    /// </summary>
+    /// <param name="_state"></param>
     public void setComponents(bool _state)
     {
         foreach (Behaviour item in disableComponents)
@@ -266,6 +308,30 @@ public class WaveBehaviour : MonoBehaviour
             money.transform.position = post;
             money.GetComponent<MoneyScript10K>().setMoneyAmout(amount % maxMoneyAmount);
         }
+    }
+
+    /// <summary>
+    /// Sets the variables' values in GameInstanceInformation and calls SaveInformation.
+    /// </summary>
+    void SaveGame()
+    {
+        List<Vector3> moneyPosList = new List<Vector3>();
+        Vector3[] moneyPosArray;
+        foreach (var item in GameObject.FindGameObjectsWithTag("Money"))
+            moneyPosList.Add(item.transform.position);
+
+        moneyPosArray = moneyPosList.ToArray();
+
+        GameInstanceInformation.MoneyLocations = moneyPosArray;
+
+        GameInstanceInformation.PlayerAttentionLevel = official.GetComponent<OfficialAttention>().officialAttention;
+        GameInstanceInformation.PlayerMoney = GameObject.Find("LevelManager").GetComponent<MoneyTransactionScript>().getTotalCash();
+
+        GameInstanceInformation.SledgehammerBought = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<AssetMenuScript>().sledgeBought;
+        GameInstanceInformation.BasementBought = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<AssetMenuScript>().basementKeyBought;
+        GameInstanceInformation.SuccessfulWaves = (int)successfulWaves;
+
+        SaveInformation.SaveAllInformation();
     }
 
 

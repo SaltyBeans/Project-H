@@ -755,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d7ba73b8e29af419d87131a8e00208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadedGame: 0
 --- !u!4 &1194411352
 Transform:
   m_ObjectHideFlags: 0
@@ -1477,13 +1478,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2043812232}
-        m_MethodName: ClickAsync
-        m_Mode: 3
+      - m_Target: {fileID: 1194411353}
+        m_MethodName: newGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(MoneyTransactionScript))]
@@ -18,46 +17,42 @@ public class AssetMenuScript : MonoBehaviour
     public OfficialAttention officialAttention;
 
     //private float updateTotalCashTimer;
-    private bool sledgeBought;
-    private bool basementKeyBought;
-    private bool itemYBought; //placeholder
-    private bool itemZBought; //placeholder
-    
-    void Start ()
+    public bool sledgeBought;
+    public bool basementKeyBought;
+    public bool itemYBought; //placeholder
+    public bool itemZBought; //placeholder
+
+    void Start()
     {
-        sledgeBought = false;
-        basementKeyBought = false;
-        itemYBought = false;
-        itemZBought = false;
-	    assetMenu.SetActive(false);
+        assetMenu.SetActive(false);
         transaction = GetComponent<MoneyTransactionScript>();
         pauseMenu = GetComponent<PauseMenuScript>();
         //updateTotalCashTimer = Time.time;
         totalCashText.text = "Total Cash: " + transaction.getTotalCash() + "$";
     }
-	
-	void Update ()
-	{
-	    totalCashText.text = "Total Cash: " + transaction.getTotalCash() + "$"; //Could affect performance
 
-	    if (Input.GetKey(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
-	    {
-	        assetMenu.SetActive(true);
+    void Update()
+    {
+        totalCashText.text = "Total Cash: " + transaction.getTotalCash() + "$"; //Could affect performance
+
+        if (Input.GetKey(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
+        {
+            assetMenu.SetActive(true);
             player.GetComponent<Crosshair>().OriginalOn = false;
             player.GetComponent<Crosshair>().CursorLock = false;
             Time.timeScale = 0;
-	    }
-	    else if(Input.GetKeyUp(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
-	    {
-	        assetMenu.SetActive(false);
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
+        {
+            assetMenu.SetActive(false);
             player.GetComponent<Crosshair>().OriginalOn = true;
             player.GetComponent<Crosshair>().CursorLock = true;
-	        warningText.text = null;
+            warningText.text = null;
             Time.timeScale = 1;
-	    }
-	    
-	}
-    
+        }
+
+    }
+
     public void PurchaseItemWithID(int id)//When the button with id is pressed, perform the purchase transaction
     {
         if (id == 1 && !sledgeBought)
@@ -130,11 +125,11 @@ public class AssetMenuScript : MonoBehaviour
         }
         if (itemYBought)
         {
-            
+
         }
         if (itemZBought)
         {
-            
+
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class SaveInformation
+public static class SaveInformation
 {
     /// <summary>
     /// Save all the info about the current instance of the game.
@@ -8,8 +8,11 @@ public class SaveInformation
     {
         PlayerPrefs.SetFloat("PlayerAttentionLevel", GameInstanceInformation.PlayerAttentionLevel);
         PlayerPrefsX.SetVector3Array("MoneyLocations", GameInstanceInformation.MoneyLocations);
-        PlayerPrefsX.SetQuaternionArray("MoneyRotations", GameInstanceInformation.MoneyRotations);
-        PlayerPrefs.SetFloat("PlayerMoneyInAssets", GameInstanceInformation.PlayerMoneyInAssets);
+        //PlayerPrefsX.SetQuaternionArray("MoneyRotations", GameInstanceInformation.MoneyRotations);
+        PlayerPrefs.SetFloat("PlayerMoney", GameInstanceInformation.PlayerMoney);
+        PlayerPrefsX.SetBool("SledgehammerBought", GameInstanceInformation.SledgehammerBought);
+        PlayerPrefsX.SetBool("BasementBought", GameInstanceInformation.BasementBought);
+        PlayerPrefs.SetInt("SuccessfulWaves", GameInstanceInformation.SuccessfulWaves);
     }
 
 }
