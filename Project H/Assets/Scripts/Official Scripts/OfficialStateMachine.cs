@@ -12,9 +12,13 @@ public class GoToDoor : IState
 {
     Transform doorStopPoint = GameObject.Find("AIStopPositions/StopPos#1").GetComponent<Transform>();
     HideWaveScript waveTimer = GameObject.Find("LevelManager").GetComponent<HideWaveScript>();
+    private OfficialAttention officialAttention = GameObject.Find("LevelManager").GetComponent<OfficialAttention>();
     bool targetSet = false;
+
     public void Enter(AIControl _official)
-    { }
+    {
+        officialAttention.IncrementAttention(15f);
+    }
 
     public void Execute(AIControl _official)
     {
@@ -52,7 +56,7 @@ public class LookAtDoor : IState
         _official.character.Move(Vector3.zero, false, false);
 
         audSouce = _official.GetComponentInChildren<AudioSource>();
-        offAttention = _official.GetComponent<OfficialAttention>();
+        offAttention = GameObject.Find("LevelManager").GetComponent<OfficialAttention>()/*_official.GetComponent<OfficialAttention>()*/;
         audSouce.clip = Resources.Load("knocking_sound") as AudioClip;
         doorScript = outsideDoor.GetComponent<DoorScript>();
 
@@ -65,7 +69,7 @@ public class LookAtDoor : IState
 
         if (Time.time - time > 4.5f) //Wait 4.5 seconds
         {
-            if (offAttention.getAttentionValue() > 50f) //If the attention is high enough, knock.
+            if (offAttention.getAttentionValue() > 75f) //If the attention is high enough, knock.
             {
                 if (doorScript.getState()) //If the door is open
                 {
@@ -82,8 +86,16 @@ public class LookAtDoor : IState
 
             else //If the attention is low, leave.
             {
-                _official.OfficialLookAt(Vector3.zero);
-                _official.getFSM().ChangeCurrentState(new Leave());
+                if (offAttention.getAttentionValue() > 50f)
+                {
+                    _official.OfficialLookAt(Vector3.zero);
+                    _official.getFSM().ChangeCurrentState(new Search());
+                }
+                else
+                {
+                    _official.OfficialLookAt(Vector3.zero);
+                    _official.getFSM().ChangeCurrentState(new Leave());
+                }
             }
         }
     }
@@ -98,12 +110,13 @@ public class Search : IState //TODO: implement Search state
     List<GameObject> currentStopPoints = new List<GameObject>();
 
     List<GameObject> currentLookPoints = new List<GameObject>();
+    private OfficialAttention officialAttention = GameObject.Find("LevelManager").GetComponent<OfficialAttention>();
 
     int searchLevel;
 
     public void Enter(AIControl _official)
     {
-        float attention = _official.GetComponent<OfficialAttention>().getAttentionValue();
+        float attention = GameObject.Find("LevelManager").GetComponent<OfficialAttention>().getAttentionValue() /*_official.GetComponent<OfficialAttention>().getAttentionValue()*/;
 
         //Determine the searchLevel 
         //if (attention <= 50f)                         //0...50
@@ -172,6 +185,10 @@ public class Search : IState //TODO: implement Search state
         }
         else
         {
+            if (searchLevel == 4)
+            {
+                officialAttention.IncrementAttention(-50f);
+            }
             _official.OfficialLookAt(Vector3.zero);
             _official.getFSM().ChangeCurrentState(new Leave());
         }
@@ -179,6 +196,7 @@ public class Search : IState //TODO: implement Search state
 
     public void Exit(AIControl _official)
     {
+        
     }
 }
 

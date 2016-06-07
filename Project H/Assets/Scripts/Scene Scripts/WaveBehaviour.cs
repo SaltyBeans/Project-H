@@ -25,7 +25,7 @@ public class WaveBehaviour : MonoBehaviour
 
     bool textUp = false;
     private Text currentText;
-
+    private float currentCash = 50000;
     bool successfulPlayer = false;
     bool levelFinished = false;
     GameInstanceInformation instanceInfo;
@@ -149,9 +149,8 @@ public class WaveBehaviour : MonoBehaviour
         // A coroutine artifact started from previous fadeIn makes 3rd text visible before the 1st and 2nd.
 
         Text1.text = "You need to hide the evidence.";
-        Text2.text = "This week it's 50.000$.\n Next week there will be more.";
+        Text2.text = "This week it's " +currentCash+ "$.\n Next week there will be more.";
         Text3.text = "You don't have much time.";
-
         Color c = Text1.color;
         c.a = 0f;           //Make the texts transparent.
         Text1.color = c;
@@ -199,7 +198,7 @@ public class WaveBehaviour : MonoBehaviour
             Text1.text = "Great Job";
             Text2.text = "Your superiors are proud.";
             Text3.text = "But it's not over.";
-
+            currentCash = ((int)successfulWaves + 2) *10000 * 5;
             Color c = Text1.color;
             c.a = 0f;           //Make the texts transparent.
             Text1.color = c;
@@ -324,7 +323,7 @@ public class WaveBehaviour : MonoBehaviour
 
         GameInstanceInformation.MoneyLocations = moneyPosArray;
 
-        GameInstanceInformation.PlayerAttentionLevel = official.GetComponent<OfficialAttention>().officialAttention;
+        GameInstanceInformation.PlayerAttentionLevel = GameObject.Find("LevelManager").GetComponent<OfficialAttention>().officialAttention;
         GameInstanceInformation.PlayerMoney = GameObject.Find("LevelManager").GetComponent<MoneyTransactionScript>().getTotalCash();
 
         GameInstanceInformation.SledgehammerBought = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<AssetMenuScript>().sledgeBought;

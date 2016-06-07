@@ -18,7 +18,6 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !Input.GetKey(KeyCode.Tab))
         {
-            Debug.Log("Escape Pressed");
             if (Time.timeScale == 1)
             {
                 pauseMenu.SetActive(true);
@@ -46,21 +45,14 @@ public class PauseMenuScript : MonoBehaviour
 
     public void quitToMainMenu()
     {
-        Debug.Log("Quit To Main Menu Pressed");
         pauseMenu.SetActive(false);
         pauseMenuIsOn = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
-    public void saveGame()
-    {
-        Debug.Log("Save Game Pressed");
-    }
-
     public void resumeGame()
     {
-        Debug.Log("Resume Game Pressed");
         pauseMenu.SetActive(false);
         player.GetComponent<Crosshair>().OriginalOn = true;
         player.GetComponent<Crosshair>().CursorLock = true;

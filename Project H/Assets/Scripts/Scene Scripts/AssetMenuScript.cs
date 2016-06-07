@@ -15,8 +15,7 @@ public class AssetMenuScript : MonoBehaviour
     public GameObject basement;
     public GameObject sledgehammer;
     public OfficialAttention officialAttention;
-
-    //private float updateTotalCashTimer;
+    
     public bool sledgeBought;
     public bool basementKeyBought;
     public bool itemYBought; //placeholder
@@ -27,13 +26,12 @@ public class AssetMenuScript : MonoBehaviour
         assetMenu.SetActive(false);
         transaction = GetComponent<MoneyTransactionScript>();
         pauseMenu = GetComponent<PauseMenuScript>();
-        //updateTotalCashTimer = Time.time;
         totalCashText.text = "Total Cash: " + transaction.getTotalCash() + "$";
     }
 
     void Update()
     {
-        totalCashText.text = "Total Cash: " + transaction.getTotalCash() + "$"; //Could affect performance
+        
 
         if (Input.GetKey(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
         {
@@ -41,6 +39,7 @@ public class AssetMenuScript : MonoBehaviour
             player.GetComponent<Crosshair>().OriginalOn = false;
             player.GetComponent<Crosshair>().CursorLock = false;
             Time.timeScale = 0;
+            totalCashText.text = "Total Cash: " + transaction.getTotalCash() + "$";
         }
         else if (Input.GetKeyUp(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
         {

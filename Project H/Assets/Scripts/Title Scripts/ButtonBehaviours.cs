@@ -12,20 +12,17 @@ public class ButtonBehaviours : MonoBehaviour
 
     public void newGame()
     {
-        Debug.Log("New Game Pressed");
         PlayerPrefs.DeleteAll();
         GetComponent<GameInstanceInformation>().loadedGame = false;
         GameObject.Find("Canvas").GetComponent<ClickToLoadAsync>().ClickAsync(1);
     }
     public void quitGame()
     {
-        Debug.Log("Quit Game Pressed");
         Application.Quit();
     }
 
     public void loadGame()
     {
-        Debug.Log("Load Game Pressed");
         GetComponent<GameInstanceInformation>().loadedGame = true;
         GameObject.Find("Canvas").GetComponent<ClickToLoadAsync>().ClickAsync(1);
     }
