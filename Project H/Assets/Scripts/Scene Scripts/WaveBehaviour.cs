@@ -190,8 +190,8 @@ public class WaveBehaviour : MonoBehaviour
         player.transform.position = playerStartingTransform.position; //Reset the position of the player.
         player.transform.rotation = playerStartingTransform.rotation; //Reset the rotation of the player.
 
-        official.transform.position = officialStartingTransform.position; //Reset the position of the official.
-        official.transform.rotation = officialStartingTransform.rotation; //Reset the rotation of the official.
+        official.gameObject.transform.position = officialStartingTransform.position; //Reset the position of the official.
+        official.gameObject.transform.rotation = officialStartingTransform.rotation; //Reset the rotation of the official.
         official.GetComponent<AIControl>().inspectionComplete = false;
         official.GetComponent<OfficialStateMachine>().ChangeCurrentState(new GoToDoor());
         levelFinished = false;
