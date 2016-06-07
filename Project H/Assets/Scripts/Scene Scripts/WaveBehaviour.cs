@@ -69,11 +69,9 @@ public class WaveBehaviour : MonoBehaviour
         }
         else
         {
-            official.GetComponent<OfficialAttention>().officialAttention = 0;
+            GetComponent<OfficialAttention>().officialAttention = 0;
             assetScript.sledgeBought = false;
             assetScript.basementKeyBought = false;
-            assetScript.itemYBought = false;
-            assetScript.itemZBought = false;
             successfulWaves = 0;
         }
 
@@ -163,7 +161,7 @@ public class WaveBehaviour : MonoBehaviour
         StartCoroutine(FadeTo(Text1, 1.0f, 2.0f));
         EndWaveTexture.SetActive(true);
 
-        hideScript.hideTime = (((int)successfulWaves + 1f) * 10f) + 5f;              // +5 is for the text screen.
+        hideScript.hideTime = (((int)successfulWaves + 1f) * 120f) + 5f;              // +5 is for the text screen.
         spawnMoney(((int)successfulWaves + 1) * 10000 * 5, moneySpawnTransform.position); //Spawn the money
     }
 
@@ -312,7 +310,7 @@ public class WaveBehaviour : MonoBehaviour
     /// <summary>
     /// Sets the variables' values in GameInstanceInformation and calls SaveInformation.
     /// </summary>
-    void SaveGame()
+    public void SaveGame()
     {
         List<Vector3> moneyPosList = new List<Vector3>();
         Vector3[] moneyPosArray;

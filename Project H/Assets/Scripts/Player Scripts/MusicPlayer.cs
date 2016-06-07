@@ -15,6 +15,7 @@ public class MusicPlayer : MonoBehaviour
 
         musicSource.clip = musicClips[0];
         musicSource.playOnAwake = false;
+        musicSource.volume = 0.15f;
     }
 
 

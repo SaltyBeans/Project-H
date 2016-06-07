@@ -24,10 +24,10 @@ public class OfficialAttention : MonoBehaviour
     {
         attentionSlider.value = officialAttention;
 
-        if (Input.GetKeyDown(KeyCode.I)) //TODO: debug, remove
-        {
-            IncrementAttention(25f);
-        }
+        //if (Input.GetKeyDown(KeyCode.I)) //For debugging purposes
+        //{
+        //    IncrementAttention(25f);
+        //}
     }
 
     public float getAttentionValue()

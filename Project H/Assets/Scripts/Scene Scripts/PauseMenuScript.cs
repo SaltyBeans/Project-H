@@ -47,6 +47,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         pauseMenuIsOn = false;
+        GetComponent<WaveBehaviour>().SaveGame();
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }

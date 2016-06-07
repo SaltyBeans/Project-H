@@ -18,8 +18,6 @@ public class AssetMenuScript : MonoBehaviour
     
     public bool sledgeBought;
     public bool basementKeyBought;
-    public bool itemYBought; //placeholder
-    public bool itemZBought; //placeholder
 
     void Start()
     {
@@ -31,8 +29,6 @@ public class AssetMenuScript : MonoBehaviour
 
     void Update()
     {
-        
-
         if (Input.GetKey(KeyCode.Tab) && !pauseMenu.getPauseMenuStatus())
         {
             assetMenu.SetActive(true);
@@ -82,30 +78,6 @@ public class AssetMenuScript : MonoBehaviour
                 warningText.text = "Warning: Not enough money!";
             }
         }
-        else if (id == 3 && !itemYBought)
-        {
-            if (transaction.getTotalCash() >= 0)
-            {
-                itemYBought = true;
-                transaction.Buy(0);
-            }
-            else
-            {
-                warningText.text = "Warning: Not enough money!";
-            }
-        }
-        else if (id == 4 && !itemZBought)
-        {
-            if (transaction.getTotalCash() >= 0)
-            {
-                itemZBought = true;
-                transaction.Buy(0);
-            }
-            else
-            {
-                warningText.text = "Warning: Not enough money!";
-            }
-        }
         else
         {
             warningText.text = "Warning: Item already bought!";
@@ -121,14 +93,6 @@ public class AssetMenuScript : MonoBehaviour
         if (basementKeyBought)
         {
             basement.GetComponent<BasementScript>().unlockBasement();
-        }
-        if (itemYBought)
-        {
-
-        }
-        if (itemZBought)
-        {
-
         }
     }
 }
