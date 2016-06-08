@@ -10,9 +10,10 @@
 	Emre Özdemir & Yigit Can Dündar
 
 ###**Important Note:**
-	If the game will be played through the Unity Project Editor: The game will only work if the play session starts from the first scene,
-	which is called "Title Scene". If the play session starts from the "Wave 1 - House", exceptions will be thrown. This behaviour is 
-	intended and if the game starts from the correct scene no problems should occur.
+	If the game will be played through the Unity Project Editor: The game will only work if the play session
+	starts from the first scene, which is called "Title Scene". If the play session starts from the
+	"Wave 1 - House", exceptions will be thrown. This behaviour is intended and if the game starts from
+	the correct scene no problems should occur.
 
 ###**Controls:**
 	
