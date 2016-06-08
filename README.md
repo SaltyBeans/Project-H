@@ -35,10 +35,10 @@
 		its game over.
     
 	    Notes:
-    	-Wave timers are usually larger than what the player would need. So it is possible to end the wave by interacting with
-    	the phone inside the living room.
+    	-Wave timers are usually larger than what the player would need. So it is possible to end the wave by
+		 interacting with the phone inside the living room.
     	-The game automatically saves your progress at the beginning of each wave.
-	-The cutscenes can be skipped by hitting the "Space" button.
+		-The cutscenes can be skipped by hitting the "Space" button.
 
    For more information on how we made the project, visit our Trello page:
    [https://trello.com/b/UFaxjuXe/project-h-v2](https://trello.com/b/UFaxjuXe/project-h-v2)
