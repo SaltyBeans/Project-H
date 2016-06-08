@@ -31,8 +31,8 @@
 
 ###**Gameplay:**
 		Hide the money until the time runs out. After the timer ends, the Official will come to your house.
-		And based on the player's attention level, he will inspect the house. If he finds any money lying around your house
-		its game over.
+		And based on the player's attention level, he will inspect the house. If he finds any money lying 
+		around your house its game over.
     
 	    Notes:
     	-Wave timers are usually larger than what the player would need. So it is possible to end the wave by
